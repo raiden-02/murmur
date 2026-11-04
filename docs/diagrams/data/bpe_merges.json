@@ -1,0 +1,64 @@
+{
+ "symbols": [
+  "Ġ",
+  "t",
+  "o",
+  "n",
+  "i",
+  "g",
+  "h",
+  "t"
+ ],
+ "merges": [
+  {
+   "rank": 3,
+   "left": "Ġ",
+   "right": "t",
+   "start": 0,
+   "end": 2
+  },
+  {
+   "rank": 7,
+   "left": "o",
+   "right": "n",
+   "start": 2,
+   "end": 4
+  },
+  {
+   "rank": 87,
+   "left": "i",
+   "right": "g",
+   "start": 4,
+   "end": 6
+  },
+  {
+   "rank": 170,
+   "left": "h",
+   "right": "t",
+   "start": 6,
+   "end": 8
+  },
+  {
+   "rank": 235,
+   "left": "ig",
+   "right": "ht",
+   "start": 4,
+   "end": 8
+  },
+  {
+   "rank": 8510,
+   "left": "Ġt",
+   "right": "on",
+   "start": 0,
+   "end": 4
+  },
+  {
+   "rank": 17657,
+   "left": "Ġton",
+   "right": "ight",
+   "start": 0,
+   "end": 8
+  }
+ ],
+ "id": 17913
+}

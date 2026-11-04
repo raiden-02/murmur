@@ -1,0 +1,38 @@
+{
+ "engine": "llama.cpp (Ollama 0.40.13)",
+ "format": "f16",
+ "ttft_ms": 18.106000032275915,
+ "prompt_tokens": 377,
+ "decode_tokens_per_second": 173.91062385475365,
+ "first_reply": "Priya had always been fascinated by the idea of augmenting her senses. As a child, she had spent countless hours poring over old science fiction books, dreaming of the day when she could unlock the secrets of the universe. Her parents, both doctors, had always been supportive of her interests, but they had never been able to understand the allure of the future. Priya had always felt like an outsider, a freak, a freak with a purpose.\n\nIt wasn't until she was in her late twenties that she finally found the courage to pursue her dreams. She had always been a bit of a loner, but she had always felt like she was missing something. She had always felt like she was living a life that wasn't her own, that she was stuck in a rut, waiting for something to happen. And then she had found the van.\n\nIt was a small, battered old van, with rusted wheels and a faded paint job. Priya had always been drawn to things that were old and broken, things that had been through the fire and the flood. She had always felt like she was the only one who could appreciate the beauty of decay. And then she had found the van, and she knew that she had found her calling.\n\nShe had spent",
+ "throughput": [
+  {
+   "requests": 1,
+   "tokens_per_second": 173.4331097625764,
+   "seconds": 1.4760734000010416,
+   "tokens": 256,
+   "prompt_tokens": 382
+  },
+  {
+   "requests": 8,
+   "tokens_per_second": 928.5207666884379,
+   "seconds": 2.20565879996866,
+   "tokens": 2048,
+   "prompt_tokens": 3004
+  },
+  {
+   "requests": 32,
+   "tokens_per_second": 1225.471515206228,
+   "seconds": 6.684773899964057,
+   "tokens": 8192,
+   "prompt_tokens": 11996
+  },
+  {
+   "requests": 64,
+   "tokens_per_second": 1769.0959241648263,
+   "seconds": 9.26122760004364,
+   "tokens": 16384,
+   "prompt_tokens": 24002
+  }
+ ]
+}

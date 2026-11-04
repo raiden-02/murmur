@@ -1,0 +1,4 @@
+# cmd.exe misreads labels and goto in batch files with bare LF line endings.
+*.cmd text eol=crlf
+# The quality evaluation tokenizes this text byte for byte: the same line endings on every checkout.
+reference/eval/prose.txt text eol=lf

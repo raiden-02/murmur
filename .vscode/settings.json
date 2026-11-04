@@ -1,0 +1,27 @@
+{
+  "cmake.useCMakePresets": "always",
+  "cmake.configurePreset": "x64-debug",
+  "cmake.buildPreset": "x64-debug",
+  "cmake.useVsDeveloperEnvironment": "always",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell (MSVC x64)": {
+      "path": "powershell.exe",
+      "args": ["-NoExit", "-Command", ". '${workspaceFolder}\\tools\\vs-env.ps1'"],
+      "icon": "tools"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell (MSVC x64)",
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "clangd.arguments": [
+    "--background-index",
+    "--header-insertion=never",
+    "--compile-commands-dir=${workspaceFolder}/out/build/x64-debug"
+  ],
+  "files.associations": {
+    "*.cu": "cuda-cpp",
+    "*.cuh": "cuda-cpp"
+  },
+  "workbench.editorAssociations": {
+    "*.md": "vscode.markdown.preview.editor"
+  }
+}

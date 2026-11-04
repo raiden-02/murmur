@@ -1,0 +1,51 @@
+# Model weights and generated reference data (large, licensed separately)
+models/
+*.safetensors
+*.gguf
+*.bin
+reference/out/
+
+# CMake / Ninja output (Visual Studio Open Folder)
+out/
+build/
+cmake-build-*/
+CMakeUserPresets.json
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+_deps/
+
+# Visual Studio local state
+.vs/
+*.user
+*.suo
+*.VC.db
+*.VC.VC.opendb
+ipch/
+
+# Compiler / linker leftovers outside the build tree
+*.obj
+*.pdb
+*.ilk
+*.idb
+*.iobj
+*.ipdb
+*.exp
+*.log
+*.tlog
+*.lastbuildstate
+
+# Profiler captures (Visual Studio, Nsight Systems, Nsight Compute)
+*.vsp
+*.vspx
+*.diagsession
+*.nsys-rep
+*.ncu-rep
+*.ncu-repz
+*.qdrep
+*.sqlite
+
+# Python reference tooling
+__pycache__/
+.venv/

@@ -1,0 +1,39 @@
+{
+ "setup": "RTX 4080 SUPER, Release, BF16 tensor-core multi-row math, CUDA graphs, 512 tokens of context per conversation, best of 3 runs of 16 steps (murmur-lab batch)",
+ "batch": [
+  1,
+  2,
+  4,
+  8,
+  16,
+  32,
+  64
+ ],
+ "ms_per_step": [
+  5.06,
+  5.93,
+  6.36,
+  6.48,
+  6.84,
+  8.0,
+  10.13
+ ],
+ "tokens_per_second": [
+  198,
+  337,
+  629,
+  1235,
+  2338,
+  4001,
+  6317
+ ],
+ "ceiling_tokens_per_second": [
+  236,
+  467,
+  917,
+  1765,
+  3286,
+  5774,
+  9292
+ ]
+}

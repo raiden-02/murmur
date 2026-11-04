@@ -1,0 +1,38 @@
+{
+ "engine": "llama.cpp (Ollama 0.40.13)",
+ "format": "q8_0",
+ "ttft_ms": 15.956599963828921,
+ "prompt_tokens": 377,
+ "decode_tokens_per_second": 274.5293006377954,
+ "first_reply": "Priya had always been fascinated by the idea of augmenting her senses. As a child, she had spent countless hours poring over old science fiction books, dreaming of the day when she could unlock the secrets of the universe. Her parents, both doctors, had always been supportive of her interests, but they had never been able to understand the allure of the future. Priya had always felt like an outsider, a curious observer of the world around her.\n\nIt wasn't until she was in her late twenties that she finally found the courage to take the leap. She had always been a bit of a loner, preferring to spend her time alone in the quiet corners of the city, reading and thinking. But one day, as she was walking home from the library, she saw a van parked on the side of the road. It was old and battered, but it was also full of hope. Inside, there were stacks of boxes, each one containing a different type of implant.\n\nPriya had always been fascinated by the idea of augmenting her senses. As a child, she had spent countless hours poring over old science fiction books, dreaming of the day when she could unlock the secrets of the universe. Her parents, both doctors, had always been supportive of her",
+ "throughput": [
+  {
+   "requests": 1,
+   "tokens_per_second": 266.9837933506219,
+   "seconds": 0.9588597000110894,
+   "tokens": 256,
+   "prompt_tokens": 382
+  },
+  {
+   "requests": 8,
+   "tokens_per_second": 1365.688958690307,
+   "seconds": 1.4996094000525773,
+   "tokens": 2048,
+   "prompt_tokens": 3004
+  },
+  {
+   "requests": 32,
+   "tokens_per_second": 1796.9202428116212,
+   "seconds": 4.558911299915053,
+   "tokens": 8192,
+   "prompt_tokens": 11996
+  },
+  {
+   "requests": 64,
+   "tokens_per_second": 1884.7808307630394,
+   "seconds": 8.692787900101393,
+   "tokens": 16384,
+   "prompt_tokens": 24002
+  }
+ ]
+}

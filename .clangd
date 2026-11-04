@@ -1,0 +1,52 @@
+# clangd reads the Ninja compile database from the x64-debug preset.
+# Host files are compiled with cl.exe and CUDA files with nvcc. Neither driver
+# will print its system includes in the way clangd expects, so the MSVC and
+# Windows SDK paths are listed here.
+#
+# Those paths are this machine's MSVC 14.51 and Windows SDK 10.0.26100.
+# cl.exe only understands /I. nvcc commands are parsed as clang, which wants
+# -isystem, and the nvcc-only flags are stripped. CUDA 13.4 is named so clangd
+# can parse the CUDA headers. If a toolkit update makes includes fail again,
+# refresh the include paths and --cuda-path.
+CompileFlags:
+  CompilationDatabase: out/build/x64-debug
+
+---
+If:
+  PathMatch: .*\.(c|cc|cpp|cxx|h|hh|hpp|hxx|ipp)
+
+CompileFlags:
+  Add:
+    - /I
+    - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/include"
+    - /I
+    - "C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt"
+    - /I
+    - "C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/shared"
+    - /I
+    - "C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/um"
+
+---
+If:
+  PathMatch: .*\.(cu|cuh)
+
+CompileFlags:
+  Remove:
+    - -forward-unknown-to-host-compiler
+    - -Xcompiler*
+    - --generate-code*
+    - --compiler-bindir*
+    - --diag-suppress*
+    - -arch*
+  Add:
+    - "--cuda-path=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.4"
+    - --cuda-gpu-arch=sm_89
+    - --no-cuda-version-check
+    - -isystem
+    - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/include"
+    - -isystem
+    - "C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt"
+    - -isystem
+    - "C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/shared"
+    - -isystem
+    - "C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/um"

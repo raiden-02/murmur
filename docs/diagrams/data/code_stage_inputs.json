@@ -1,0 +1,112 @@
+{
+ "source": "Step 4 of `murmur-lab schedule` (data/schedule.json): the tokens each conversation runs, from the model's tokenizer and its greedy replies (Mei's third reply token, Kenji's first).",
+ "step": 4,
+ "tokens": {
+  "Mei": [
+   [
+    582,
+    " we"
+   ]
+  ],
+  "Kenji": [
+   [
+    40,
+    "I"
+   ]
+  ],
+  "Aiko": [
+   [
+    21806,
+    " Answer"
+   ],
+   [
+    304,
+    " in"
+   ],
+   [
+    825,
+    " one"
+   ],
+   [
+    2805,
+    " short"
+   ],
+   [
+    11652,
+    " sentence"
+   ],
+   [
+    13,
+    "."
+   ],
+   [
+    151645,
+    "<|im_end|>"
+   ],
+   [
+    198,
+    "\n"
+   ],
+   [
+    151644,
+    "<|im_start|>"
+   ],
+   [
+    872,
+    "user"
+   ],
+   [
+    198,
+    "\n"
+   ],
+   [
+    5404,
+    "Do"
+   ],
+   [
+    498,
+    " you"
+   ],
+   [
+    4559,
+    " sell"
+   ],
+   [
+    80650,
+    " charms"
+   ],
+   [
+    2348,
+    " against"
+   ],
+   [
+    37232,
+    " drones"
+   ],
+   [
+    30,
+    "?"
+   ],
+   [
+    151645,
+    "<|im_end|>"
+   ],
+   [
+    198,
+    "\n"
+   ],
+   [
+    151644,
+    "<|im_start|>"
+   ],
+   [
+    77091,
+    "assistant"
+   ],
+   [
+    198,
+    "\n"
+   ]
+  ]
+ }
+}

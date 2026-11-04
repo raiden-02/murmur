@@ -1,0 +1,39 @@
+{
+ "decode_tokens_per_second": 187.81695492150027,
+ "engine": "Murmur",
+ "first_reply": "### The Discovery\n\nPriya had always been fascinated by the world of technology and gadgets. As a child, she spent countless hours tinkering with old computers and electronics, dreaming of the day she could create something truly remarkable. Her fascination with technology only grew stronger as she grew older, and she found herself drawn to the world of robotics and artificial intelligence.\n\nOne day, while browsing the internet, Priya stumbled upon a story about a groundbreaking medical breakthrough. The article described a new technology that allowed people to fit second-hand optic implants, enabling them to see the world in a way they never thought possible. Intrigued, Priya decided to do some research on the subject.\n\nShe quickly learned that the implants were not just a simple addition to the eye; they were a complex system that could be fitted to any eye, regardless of its condition. The implants were made of advanced materials that could be customized to suit the individual's needs, and they could be programmed to adapt to the user's vision over time.\n\nThe article also mentioned that the implants were not just for the visually impaired; they could be used by anyone who wanted to enhance their vision. Priya was immediately captivated by the idea of being able to see the world in a way she had never imagined before.\n\n",
+ "format": "bf16",
+ "prompt_tokens": 62,
+ "throughput": [
+  {
+   "prompt_tokens": 67,
+   "requests": 1,
+   "seconds": 1.3482546,
+   "tokens": 256,
+   "tokens_per_second": 189.87511705875136
+  },
+  {
+   "prompt_tokens": 484,
+   "requests": 8,
+   "seconds": 1.5099776,
+   "tokens": 2048,
+   "tokens_per_second": 1356.3115108462537
+  },
+  {
+   "prompt_tokens": 1916,
+   "requests": 32,
+   "seconds": 1.7448902,
+   "tokens": 8192,
+   "tokens_per_second": 4694.85128634455
+  },
+  {
+   "prompt_tokens": 3842,
+   "requests": 64,
+   "seconds": 2.0525546,
+   "tokens": 16384,
+   "tokens_per_second": 7982.248072718748
+  }
+ ],
+ "ttft_ms": 6.8032,
+ "weight_gb": 3.0877184
+}

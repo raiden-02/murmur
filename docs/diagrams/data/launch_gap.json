@@ -1,0 +1,133 @@
+{
+ "source": "Nsight Systems, murmur-lab compare --weights bf16 --batch 64: a step boundary with the median gap, no graph recorded in it",
+ "before": {
+  "label": "one graph per step",
+  "gap_us": 477.7,
+  "median_gap_us": 477.7,
+  "window_us": [
+   -150,
+   877.7
+  ],
+  "gpu": [
+   [
+    -150.0,
+    -118.9
+   ],
+   [
+    -107.0,
+    0.0
+   ],
+   [
+    477.7,
+    877.7
+   ]
+  ],
+  "cpu": [
+   {
+    "kind": "wait",
+    "from": 80.3,
+    "to": 85.4
+   },
+   {
+    "kind": "launch",
+    "from": 89.6,
+    "to": 459.9
+   },
+   {
+    "kind": "call",
+    "from": 511.7,
+    "to": 531.4
+   },
+   {
+    "kind": "call",
+    "from": 531.6,
+    "to": 537.4
+   },
+   {
+    "kind": "call",
+    "from": 539.6,
+    "to": 540.3
+   },
+   {
+    "kind": "call",
+    "from": 540.4,
+    "to": 550.9
+   },
+   {
+    "kind": "call",
+    "from": 551.8,
+    "to": 557.7
+   },
+   {
+    "kind": "wait",
+    "from": 558.2,
+    "to": 877.7
+   }
+  ]
+ },
+ "after": {
+  "label": "seven pieces of four layers",
+  "gap_us": 186.0,
+  "median_gap_us": 186.0,
+  "window_us": [
+   -150,
+   586.0
+  ],
+  "gpu": [
+   [
+    -150.0,
+    -121.3
+   ],
+   [
+    -107.6,
+    0.0
+   ],
+   [
+    186.0,
+    586.0
+   ]
+  ],
+  "cpu": [
+   {
+    "kind": "wait",
+    "from": 78.0,
+    "to": 79.1
+   },
+   {
+    "kind": "launch",
+    "from": 84.2,
+    "to": 181.2
+   },
+   {
+    "kind": "launch",
+    "from": 182.7,
+    "to": 236.0
+   },
+   {
+    "kind": "launch",
+    "from": 236.8,
+    "to": 307.8
+   },
+   {
+    "kind": "launch",
+    "from": 308.3,
+    "to": 372.6
+   },
+   {
+    "kind": "launch",
+    "from": 373.1,
+    "to": 437.8
+   },
+   {
+    "kind": "launch",
+    "from": 438.9,
+    "to": 497.6
+   },
+   {
+    "kind": "launch",
+    "from": 498.2,
+    "to": 552.6
+   }
+  ]
+ }
+}

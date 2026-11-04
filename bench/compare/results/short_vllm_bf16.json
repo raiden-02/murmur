@@ -1,0 +1,39 @@
+{
+ "engine": "vLLM 0.28.0",
+ "format": "bf16",
+ "cuda_graphs": true,
+ "ttft_ms": 8.213077999982943,
+ "prompt_tokens": 62,
+ "decode_tokens_per_second": 183.83947104513823,
+ "first_reply": "### The Discovery\n\nPriya had always been fascinated by the world of technology and innovation. As a child, she spent countless hours tinkering with old computers and gadgets, dreaming of a future where she could harness the power of artificial intelligence to solve the world's problems. Her parents, both engineers, had always encouraged her curiosity and ambition, and Priya had grown up with a sense of purpose that was both inspiring and daunting.\n\nOne day, while browsing the internet, Priya stumbled upon a story about a groundbreaking medical breakthrough. It was about a team of researchers who had developed a revolutionary technology that could restore vision to the blind. The technology, known as \"OptiFix,\" was a pair of custom-made, high-tech implants that could be surgically implanted into the eye to restore vision to those who had lost it due to age-related macular degeneration or other causes.\n\nThe story was filled with details about the intricate design of the implants, the advanced materials used, and the potential for restoring vision to those who had been blind for years. Priya was captivated by the idea of being able to see again, and she knew that this was the kind of technology that could change her life.\n\n### The Journey Begins\n\nDetermined to learn more about OptiFix",
+ "throughput": [
+  {
+   "requests": 1,
+   "tokens_per_second": 180.76060824380033,
+   "seconds": 1.4162377659999947,
+   "tokens": 256,
+   "prompt_tokens": 67
+  },
+  {
+   "requests": 8,
+   "tokens_per_second": 1318.8498122747872,
+   "seconds": 1.5528682500000173,
+   "tokens": 2048,
+   "prompt_tokens": 484
+  },
+  {
+   "requests": 32,
+   "tokens_per_second": 4764.926897511693,
+   "seconds": 1.7192288940000253,
+   "tokens": 8192,
+   "prompt_tokens": 1916
+  },
+  {
+   "requests": 64,
+   "tokens_per_second": 8909.018868256164,
+   "seconds": 1.8390352790000293,
+   "tokens": 16384,
+   "prompt_tokens": 3842
+  }
+ ]
+}

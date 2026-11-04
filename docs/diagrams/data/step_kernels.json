@@ -1,0 +1,127 @@
+{
+ "source": "Nsight Compute, murmur-lab batch --weights bf16 --batch 64 --no-graphs, one decode step (clocks and caches as in real use); RTX 4080 SUPER, 736 GB/s",
+ "before": [
+  {
+   "kind": "gate/up multiply",
+   "us": 2584.3,
+   "bandwidth": 0.832
+  },
+  {
+   "kind": "down multiply",
+   "us": 1628.9,
+   "bandwidth": 0.772
+  },
+  {
+   "kind": "decode attention",
+   "us": 2206.3,
+   "bandwidth": 0.777
+  },
+  {
+   "kind": "vocabulary",
+   "us": 785.5,
+   "bandwidth": 0.876
+  },
+  {
+   "kind": "qkv multiply",
+   "us": 416.6,
+   "bandwidth": 0.624
+  },
+  {
+   "kind": "o multiply",
+   "us": 388.0,
+   "bandwidth": 0.514
+  },
+  {
+   "kind": "SwiGLU",
+   "us": 442.4,
+   "bandwidth": 0.538
+  },
+  {
+   "kind": "RMSNorm",
+   "us": 315.3,
+   "bandwidth": 0.13
+  },
+  {
+   "kind": "to BF16",
+   "us": 258.3,
+   "bandwidth": 0.494
+  },
+  {
+   "kind": "RoPE + cache",
+   "us": 113.1,
+   "bandwidth": 0.196
+  },
+  {
+   "kind": "bias",
+   "us": 107.6,
+   "bandwidth": 0.017
+  },
+  {
+   "kind": "other",
+   "us": 3.9,
+   "bandwidth": 0.026
+  }
+ ],
+ "after": [
+  {
+   "kind": "gate/up multiply",
+   "us": 2590.0,
+   "bandwidth": 0.854
+  },
+  {
+   "kind": "down multiply",
+   "us": 1574.5,
+   "bandwidth": 0.779
+  },
+  {
+   "kind": "decode attention",
+   "us": 2247.1,
+   "bandwidth": 0.784
+  },
+  {
+   "kind": "vocabulary",
+   "us": 791.4,
+   "bandwidth": 0.875
+  },
+  {
+   "kind": "qkv multiply",
+   "us": 416.3,
+   "bandwidth": 0.638
+  },
+  {
+   "kind": "o multiply",
+   "us": 379.5,
+   "bandwidth": 0.523
+  },
+  {
+   "kind": "SwiGLU",
+   "us": 311.2,
+   "bandwidth": 0.774
+  },
+  {
+   "kind": "RMSNorm",
+   "us": 236.9,
+   "bandwidth": 0.171
+  },
+  {
+   "kind": "to BF16",
+   "us": 84.9,
+   "bandwidth": 0.281
+  },
+  {
+   "kind": "RoPE + cache",
+   "us": 113.5,
+   "bandwidth": 0.229
+  },
+  {
+   "kind": "bias",
+   "us": 67.3,
+   "bandwidth": 0.069
+  },
+  {
+   "kind": "other",
+   "us": 3.6,
+   "bandwidth": 0.003
+  }
+ ]
+}

@@ -1,0 +1,263 @@
+{
+ "max_tokens": 256,
+ "sampling": "greedy",
+ "note": "short prompts: each request is a unique tag and one line of system prompt, then the story request; isolates decoding",
+ "requests": [
+  {
+   "system": "[Request 0] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Mei, who run the noodle stall at the market's entrance, famous for black-garlic ramen. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 1] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Kenji, who repair cracked phones and cyberdecks in a stall the size of a closet. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 2] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Aiko, who sell paper lanterns and charms that supposedly ward off drones. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 3] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Rafael, who grill skewers over a converted engine block. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 4] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Old Lin, who run the pawn stall and have bought everything the city has ever stolen. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 5] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Priya, who fit second-hand optic implants out of a van. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 6] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Tomas, who sell pirated music on old data shards. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 7] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Hana, who run the tea cart and know every rumour before it happens. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 8] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Dmitri, who sell counterfeit transit permits and swear they are genuine. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 9] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Zara, who fix delivery drones and race them on weekends. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 10] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Bao, who sell steamed buns from a stack of bamboo baskets. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 11] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Nadia, who read fortunes from the static on old television screens. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 12] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Ox, who guard the market's main power junction for a few coins a night. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 13] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Luz, who sell neon signs you can program with your own name. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 14] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Sergei, who trade in salvaged batteries from the cargo docks. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 15] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Yuki, who sell umbrellas that glow when it rains. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 16] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Marcus, who run a tiny noodle-and-news stand that prints the market's only newspaper. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 17] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Ines, who stitch jackets with hidden pockets and heat-proof lining. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 18] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Jun, who sell fried dumplings and keep a pet crow that steals coins. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 19] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Fatima, who run the spice stall and haggle like it is a sport. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 20] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Ren, who patch bullet holes in drones and people, no questions asked. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 21] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Oskar, who sell maps of tunnels under the city that may not exist. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 22] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Lena, who run a shooting gallery with targets shaped like Ryu drones. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 23] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Ming, who sell cheap memory implants that sometimes come with someone else's memories. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 24] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Cass, who deal in stolen corporate ID badges. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 25] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Pedro, who fix scooters and rent them by the hour. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 26] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Sora, who play the erhu for coins at the monorail stairs. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 27] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Gus, who sell canned coffee that is mostly caffeine pills. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 28] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Amara, who run a stall of seeds and hydroponic kits for rooftop gardens. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 29] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Viktor, who sell knives and swear they are only for cooking. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 30] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Tala, who trade gossip and data shards from the dock workers. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 31] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Hiro, who teach kids to code on scrap terminals behind his stall. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 32] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Mei, who run the noodle stall at the market's entrance, famous for black-garlic ramen. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 33] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Kenji, who repair cracked phones and cyberdecks in a stall the size of a closet. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 34] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Aiko, who sell paper lanterns and charms that supposedly ward off drones. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 35] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Rafael, who grill skewers over a converted engine block. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 36] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Old Lin, who run the pawn stall and have bought everything the city has ever stolen. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 37] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Priya, who fit second-hand optic implants out of a van. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 38] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Tomas, who sell pirated music on old data shards. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 39] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Hana, who run the tea cart and know every rumour before it happens. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 40] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Dmitri, who sell counterfeit transit permits and swear they are genuine. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 41] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Zara, who fix delivery drones and race them on weekends. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 42] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Bao, who sell steamed buns from a stack of bamboo baskets. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 43] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Nadia, who read fortunes from the static on old television screens. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 44] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Ox, who guard the market's main power junction for a few coins a night. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 45] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Luz, who sell neon signs you can program with your own name. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 46] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Sergei, who trade in salvaged batteries from the cargo docks. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 47] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Yuki, who sell umbrellas that glow when it rains. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 48] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Marcus, who run a tiny noodle-and-news stand that prints the market's only newspaper. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 49] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Ines, who stitch jackets with hidden pockets and heat-proof lining. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 50] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Jun, who sell fried dumplings and keep a pet crow that steals coins. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 51] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Fatima, who run the spice stall and haggle like it is a sport. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 52] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Ren, who patch bullet holes in drones and people, no questions asked. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 53] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Oskar, who sell maps of tunnels under the city that may not exist. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 54] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Lena, who run a shooting gallery with targets shaped like Ryu drones. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 55] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Ming, who sell cheap memory implants that sometimes come with someone else's memories. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 56] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Cass, who deal in stolen corporate ID badges. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 57] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Pedro, who fix scooters and rent them by the hour. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 58] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Sora, who play the erhu for coins at the monorail stairs. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 59] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Gus, who sell canned coffee that is mostly caffeine pills. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 60] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Amara, who run a stall of seeds and hydroponic kits for rooftop gardens. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 61] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Viktor, who sell knives and swear they are only for cooking. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 62] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Tala, who trade gossip and data shards from the dock workers. Make it at least 1,500 words."
+  },
+  {
+   "system": "[Request 63] You are a storyteller.",
+   "user": "Tell me a long, detailed story about Hiro, who teach kids to code on scrap terminals behind his stall. Make it at least 1,500 words."
+  }
+ ]
+}

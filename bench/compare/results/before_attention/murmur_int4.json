@@ -1,0 +1,39 @@
+{
+ "decode_tokens_per_second": 349.7348940927308,
+ "engine": "Murmur",
+ "first_reply": "Priya had always been a bit of a loner. She worked at the Lantern Market, selling second-hand implants, but she preferred to keep to herself. She had always been a bit of a dreamer, and her implants had been a way for her to explore the world beyond her own mind. She had always been fascinated by the idea of what was beyond the veil of consciousness, and she had always been drawn to the idea of what lay beyond the veil of the mind.\n\nPriya had always been a bit of a dreamer, and her implants had been a way for her to explore the world beyond her own mind. She had always been fascinated by the idea of what was beyond the veil of consciousness, and she had always been drawn to the idea of what lay beyond the veil of the mind. She had always been drawn to the idea of what lay beyond the veil of the mind, and she had always been drawn to the idea of what lay beyond the veil of the mind.\n\nPriya had always been a bit of a dreamer, and her implants had been a way for her to explore the world beyond her own mind. She had always been fascinated by the idea of what was beyond the veil of consciousness, and she had always been drawn to the idea",
+ "format": "int4",
+ "prompt_tokens": 377,
+ "throughput": [
+  {
+   "prompt_tokens": 382,
+   "requests": 1,
+   "seconds": 0.7626642,
+   "tokens": 256,
+   "tokens_per_second": 335.66542129550595
+  },
+  {
+   "prompt_tokens": 3004,
+   "requests": 8,
+   "seconds": 1.1398201,
+   "tokens": 2048,
+   "tokens_per_second": 1796.7747717381017
+  },
+  {
+   "prompt_tokens": 11996,
+   "requests": 32,
+   "seconds": 2.2863179,
+   "tokens": 8192,
+   "tokens_per_second": 3583.0537826782534
+  },
+  {
+   "prompt_tokens": 24002,
+   "requests": 64,
+   "seconds": 4.3583187,
+   "tokens": 16384,
+   "tokens_per_second": 3759.247803516526
+  }
+ ],
+ "ttft_ms": 30.6168,
+ "weight_gb": 0.820600832
+}

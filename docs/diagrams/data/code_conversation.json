@@ -1,0 +1,13 @@
+{
+ "source": "turns: the market's first two cues (src/game/market.cpp kCues); reply: Mei's greedy answer to the first, from murmur-lab generate \"<cue>\" (2026-11-09); counts from the model's tokenizer",
+ "cues": [
+  "(Someone slows down near your stall. Call out to them in one short sentence.)",
+  "(A security drone hums overhead. Mutter something about it in one sentence.)"
+ ],
+ "reply": "Hey there, what brings you by? Need a noodle fix?",
+ "turn_tokens": [
+  25,
+  24
+ ],
+ "reply_tokens": 14
+}

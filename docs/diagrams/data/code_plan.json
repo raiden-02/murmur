@@ -1,0 +1,225 @@
+{
+ "source": "murmur-lab schedule --json (src/lab/schedule_trace.cpp), run 2026-11-09: per step, the tokens each conversation ran (1: a decode token) and the replies that finished",
+ "max_prefill_tokens": 24,
+ "max_chunk": 512,
+ "max_batch": 64,
+ "page_size": 16,
+ "names": [
+  "Mei",
+  "Kenji",
+  "Aiko",
+  "Rafael",
+  "you"
+ ],
+ "priority": [
+  0,
+  0,
+  0,
+  0,
+  1
+ ],
+ "sends": [
+  [
+   0,
+   0
+  ],
+  [
+   0,
+   1
+  ],
+  [
+   3,
+   2
+  ],
+  [
+   5,
+   3
+  ],
+  [
+   6,
+   4
+  ]
+ ],
+ "steps": [
+  {
+   "finished": [],
+   "tokens": [
+    24,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "finished": [],
+   "tokens": [
+    14,
+    10,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "finished": [],
+   "tokens": [
+    1,
+    24,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "finished": [],
+   "tokens": [
+    1,
+    6,
+    18,
+    0,
+    0
+   ]
+  },
+  {
+   "finished": [],
+   "tokens": [
+    1,
+    1,
+    23,
+    0,
+    0
+   ]
+  },
+  {
+   "finished": [],
+   "tokens": [
+    1,
+    1,
+    1,
+    24,
+    0
+   ]
+  },
+  {
+   "finished": [],
+   "tokens": [
+    1,
+    1,
+    1,
+    0,
+    40
+   ]
+  },
+  {
+   "finished": [],
+   "tokens": [
+    1,
+    1,
+    1,
+    23,
+    1
+   ]
+  },
+  {
+   "finished": [],
+   "tokens": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "finished": [],
+   "tokens": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "finished": [
+    0
+   ],
+   "tokens": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "finished": [],
+   "tokens": [
+    0,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "finished": [
+    1
+   ],
+   "tokens": [
+    0,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "finished": [
+    2
+   ],
+   "tokens": [
+    0,
+    0,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "finished": [],
+   "tokens": [
+    0,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "finished": [
+    4
+   ],
+   "tokens": [
+    0,
+    0,
+    0,
+    1,
+    1
+   ]
+  },
+  {
+   "finished": [
+    3
+   ],
+   "tokens": [
+    0,
+    0,
+    0,
+    1,
+    0
+   ]
+  }
+ ]
+}

@@ -1,0 +1,89 @@
+{
+ "automaton_states": 913,
+ "average_allowed": 101.11500547645126,
+ "compile_ms": 1.8605,
+ "constrained": {
+  "actions": 256,
+  "examples": {
+   "call": "[ call(K]enji)",
+   "give": "[ give(te]a)",
+   "hack": "[ hack(D]OCKS, \"[TENZAI\")]",
+   "none": "[ none]",
+   "quest": "[ quest(data] shard,[ Rafa]el)",
+   "sell": "[ sell(k]nife, [50)]",
+   "walk": "[ walk(CLIN]IC)"
+  },
+  "forced_tokens": 628,
+  "parsed": 256,
+  "sampled_tokens": 639,
+  "unparsed": [],
+  "verbs": {
+   "call": 28,
+   "give": 8,
+   "hack": 27,
+   "none": 129,
+   "quest": 1,
+   "sell": 7,
+   "walk": 56
+  }
+ },
+ "forced_states": 835,
+ "free": {
+  "actions": 256,
+  "examples": {
+   "call": "[ call(Mei)]",
+   "give": "[ give(tea)]",
+   "none": "[ none]",
+   "walk": "[ walk(CLINIC)]"
+  },
+  "forced_tokens": 6,
+  "parsed": 215,
+  "sampled_tokens": 1270,
+  "unparsed": [
+   "sell(ITEM, PRICE)",
+   "sell(KNIFE, 500)",
+   "sell(SKINNY BAG, 500)",
+   "walk(POWERS)",
+   "sell(data shard, 100 credits)",
+   "walk(Ramen)",
+   "give(tea, 1)",
+   "sell(COFFEE, 10)"
+  ],
+  "verbs": {
+   "call": 25,
+   "give": 4,
+   "none": 131,
+   "walk": 55
+  }
+ },
+ "grammar": "# what an NPC does after it speaks\naction  ::= \" \" (\"none\" | walk | give | sell | hack | quest | call)\nwalk    ::= \"walk(\" place \")\"\ngive    ::= \"give(\" item \")\"\nsell    ::= \"sell(\" item \", \" price \")\"\nhack    ::= \"hack(\" place \", \\\"\" message \"\\\")\"\nquest   ::= \"quest(\" item \", \" npc \")\"\ncall    ::= \"call(\" npc \")\"\nplace   ::= \"RAMEN\" | \"CHROME\" | \"PAWN\" | \"NET CAFE\" | \"CLINIC\" | \"ARMS\" | \"ORACLE\" | \"CLUB\" | \"DOCKS\" | \"BAR\"\nitem    ::= \"noodles\" | \"skewers\" | \"tea\" | \"dumplings\" | \"steamed buns\" | \"coffee\" | \"spices\" | \"lantern\" | \"charm\" | \"umbrella\" | \"data shard\" | \"phone\" | \"optic implant\" | \"battery\" | \"transit permit\" | \"tunnel map\" | \"knife\" | \"jacket\" | \"seeds\" | \"ID badge\" | \"newspaper\" | \"neon sign\"\nnpc     ::= \"Mei\" | \"Kenji\" | \"Aiko\" | \"Rafael\" | \"Old Lin\" | \"Priya\" | \"Tomas\" | \"Hana\" | \"Dmitri\" | \"Zara\" | \"Bao\" | \"Nadia\" | \"Ox\" | \"Luz\" | \"Sergei\" | \"Yuki\" | \"Marcus\" | \"Ines\" | \"Jun\" | \"Fatima\" | \"Ren\" | \"Oskar\" | \"Lena\" | \"Ming\" | \"Cass\" | \"Pedro\" | \"Sora\" | \"Gus\" | \"Amara\" | \"Viktor\" | \"Tala\" | \"Hiro\"\nprice   ::= [1-9] [0-9]{0,2}\nmessage ::= [A-Z0-9] [A-Z0-9 !?.']{0,17}\n",
+ "grammar_bytes": 1100,
+ "no_jump_forward": {
+  "actions": 256,
+  "examples": {
+   "call": "[ call(Marcus)]",
+   "give": "[ give(tea)]",
+   "hack": "[ hack(DOCKS, \"DANGER! WE NEED TO\")]",
+   "none": "[ none]",
+   "sell": "[ sell(optic implant, 500)]",
+   "walk": "[ walk(CLINIC)]"
+  },
+  "forced_tokens": 0,
+  "parsed": 256,
+  "sampled_tokens": 1176,
+  "unparsed": [],
+  "verbs": {
+   "call": 30,
+   "give": 6,
+   "hack": 21,
+   "none": 137,
+   "sell": 6,
+   "walk": 56
+  }
+ },
+ "start_allowed": 29,
+ "system_prompt_mei": "The city is Neo Kowloon, a megacity of stacked towers where it rains almost every night. Three corporations run it: Halcyon Biotech, which owns the clinics and sells memory implants; Tessera Grid, which owns the power, the transit and the net; and Ryu Heavy Industries, which builds the drones and the walls. Their ads cover every tower, and their security drones patrol the skyline. Ordinary people live in the Lower Wards, under the elevated highways, where the neon never switches off.\nThe Lantern Market is the busiest night market in the Lower Wards. It opens at dusk on Shun Street, between the old cargo docks and the abandoned monorail station, and closes when the trains start at dawn. Stalls sell street food, repaired electronics, second-hand implants, charms, data shards, counterfeit permits and rumours. Power comes from a tangle of tapped cables, so blackouts happen once or twice a week, and everyone keeps a lamp. Corporate enforcers rarely come down here, but when they do, the stalls fold up in seconds. Last month a Tessera blackout lasted three nights, and the market ran on candles and car batteries. People here look out for each other, haggle hard, and never ask where a part came from.\nYou are one of the market's regulars. You talk like a real person from the Lower Wards: casual, short and specific, with your own opinions. You answer in one or two short sentences, you never say you are an AI or a language model, and you stay in character.\nAfter you speak, the game asks for your action, and you write exactly one:\nnone: you only talk (the usual case).\nwalk(PLACE): you go over to a storefront and come back.\ngive(ITEM): you hand the player something, free.\nsell(ITEM, PRICE): you offer the player something for a price in credits.\nhack(PLACE, \"MESSAGE\"): you take over a storefront's sign with a short message in capitals.\nquest(ITEM, NAME): you give the player something to deliver to another regular.\ncall(NAME): you wave another regular over.\nPlaces: RAMEN, CHROME, PAWN, NET CAFE, CLINIC, ARMS, ORACLE, CLUB, DOCKS, BAR.\nItems: noodles, skewers, tea, dumplings, steamed buns, coffee, spices, lantern, charm, umbrella, data shard, phone, optic implant, battery, transit permit, tunnel map, knife, jacket, seeds, ID badge, newspaper, neon sign.\nRegulars: Mei, Kenji, Aiko, Rafael, Old Lin, Priya, Tomas, Hana, Dmitri, Zara, Bao, Nadia, Ox, Luz, Sergei, Yuki, Marcus, Ines, Jun, Fatima, Ren, Oskar, Lena, Ming, Cass, Pedro, Sora, Gus, Amara, Viktor, Tala, Hiro.\nThe action must match what you just said, but never say it or write it in your words: the game asks for it after you finish speaking. When nobody is talking to you directly, only none, walk, hack or call make sense.\nYou are Mei, and you run the noodle stall at the market's entrance, famous for black-garlic ramen. Warm, quick-witted and sardonic about the corporations.",
+ "token_masks_ms": 29.5273,
+ "vocab": 151665,
+ "weights": "fp8"
+}

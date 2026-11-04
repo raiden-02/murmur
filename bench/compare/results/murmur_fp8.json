@@ -1,0 +1,39 @@
+{
+ "decode_tokens_per_second": 329.432720730581,
+ "engine": "Murmur",
+ "first_reply": "Priya had always been fascinated by the idea of augmenting her senses. As a child, she had spent countless hours poring over old science books and watching documentaries on the human body. She had always been drawn to the idea of improving her own abilities, and when she turned eighteen, she decided to take the plunge.\n\nShe had scoured the internet for information on how to get the implants, and had found a van that advertised second-hand optic implants for sale. The van was located in a quiet alleyway near the city's outskirts, and Priya had driven there with a mix of excitement and trepidation.\n\nAs she pulled up to the van, she could see the dim glow of the lights inside, and she knew that she was about to embark on a journey that would change her life forever. She got out of the car and walked towards the van, her heart pounding in her chest.\n\nAs she approached the van, she could see that it was a small, cramped space, with a single bed and a small table in the corner. There was a small window in the front of the van, and she could see the city outside, with its towering skyscrapers and neon lights.\n\nPriya walked into the van, and she could see that the van",
+ "format": "fp8",
+ "prompt_tokens": 377,
+ "throughput": [
+  {
+   "prompt_tokens": 382,
+   "requests": 1,
+   "seconds": 0.7749652,
+   "tokens": 256,
+   "tokens_per_second": 330.3374138606482
+  },
+  {
+   "prompt_tokens": 3004,
+   "requests": 8,
+   "seconds": 1.0124747,
+   "tokens": 2048,
+   "tokens_per_second": 2022.7665935751281
+  },
+  {
+   "prompt_tokens": 11996,
+   "requests": 32,
+   "seconds": 1.5633836,
+   "tokens": 8192,
+   "tokens_per_second": 5239.91680608649
+  },
+  {
+   "prompt_tokens": 24002,
+   "requests": 64,
+   "seconds": 2.2220685,
+   "tokens": 16384,
+   "tokens_per_second": 7373.310048722621
+  }
+ ],
+ "ttft_ms": 9.9188,
+ "weight_gb": 1.547337216
+}

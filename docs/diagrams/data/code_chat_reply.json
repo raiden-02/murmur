@@ -1,0 +1,43 @@
+{
+ "source": "`murmur-lab generate --sample` (seed 0): prompt 114 tokens, reply 27 tokens; the prompt split and the next message counted with the model's tokenizer.",
+ "system_tokens": 101,
+ "first_message": "What's good tonight?",
+ "first_turn_tokens": 10,
+ "generation_prompt_tokens": 3,
+ "reply": [
+  "Tonight",
+  "?",
+  " Tonight",
+  ",",
+  " we",
+  "'ve",
+  " got",
+  " some",
+  " tasty",
+  " shrimp",
+  " temp",
+  "ura",
+  " noodles",
+  " and",
+  " a",
+  " spicy",
+  " mis",
+  "o",
+  " soup",
+  " that",
+  "'ll",
+  " make",
+  " your",
+  " taste",
+  " buds",
+  " dance",
+  "!"
+ ],
+ "stop": "<|im_end|>",
+ "after_reply": [
+  "<|im_end|>",
+  "\n"
+ ],
+ "next_message": "How much for a bowl?",
+ "next_turn_tokens": 11
+}

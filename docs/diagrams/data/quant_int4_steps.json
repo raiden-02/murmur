@@ -1,0 +1,8 @@
+{
+ "about": "INT4 weights (FP32 math and KV cache), `murmur-lab quality` at each step of the quantizer: the clipping search turned off (kMaxClip = 0 in quantize.cu) with --no-importance, then --no-importance, then the default",
+ "steps": [
+  {"label": "round to nearest, full range", "kl_mean": 0.26281, "top1_percent": 69.4, "perplexity_prose": 60.041},
+  {"label": "+ clipping search", "kl_mean": 0.2407, "top1_percent": 68.7, "perplexity_prose": 60.075},
+  {"label": "+ importance-weighted error", "kl_mean": 0.0979, "top1_percent": 81.1, "perplexity_prose": 51.757}
+ ]
+}

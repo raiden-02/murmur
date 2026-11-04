@@ -1,0 +1,225 @@
+{
+ "question": "Can I buy something from you?",
+ "reply": "Sure, I've got some interesting items. How about that charmed umbrella? It might help you navigate these rainy days.",
+ "verb": " give(",
+ "at_start": {
+  "top": [
+   {
+    "token": " give",
+    "p": 0.4204034209251404,
+    "allowed": true
+   },
+   {
+    "token": " none",
+    "p": 0.2613293528556824,
+    "allowed": true
+   },
+   {
+    "token": " sell",
+    "p": 0.17255888879299164,
+    "allowed": true
+   },
+   {
+    "token": " walk",
+    "p": 0.03290468081831932,
+    "allowed": true
+   },
+   {
+    "token": " None",
+    "p": 0.028987757861614227,
+    "allowed": false
+   },
+   {
+    "token": " hack",
+    "p": 0.02282177098095417,
+    "allowed": true
+   },
+   {
+    "token": " offer",
+    "p": 0.016020411625504494,
+    "allowed": false
+   },
+   {
+    "token": " ask",
+    "p": 0.006716828793287277,
+    "allowed": false
+   },
+   {
+    "token": " NONE",
+    "p": 0.005849746055901051,
+    "allowed": false
+   },
+   {
+    "token": " buy",
+    "p": 0.004638770595192909,
+    "allowed": false
+   }
+  ],
+  "best_allowed": {
+   "token": " give",
+   "p": 0.4204034209251404,
+   "rank": 1
+  },
+  "allowed_mass": 0.9135977905233161
+ },
+ "at_start_after_space": {
+  "top": [
+   {
+    "token": " give",
+    "p": 0.4703267216682434,
+    "allowed": false
+   },
+   {
+    "token": " sell",
+    "p": 0.2269502431154251,
+    "allowed": false
+   },
+   {
+    "token": " none",
+    "p": 0.1031603291630745,
+    "allowed": false
+   },
+   {
+    "token": " hack",
+    "p": 0.054911065846681595,
+    "allowed": false
+   },
+   {
+    "token": "1",
+    "p": 0.024058425799012184,
+    "allowed": false
+   },
+   {
+    "token": " None",
+    "p": 0.02063564769923687,
+    "allowed": false
+   },
+   {
+    "token": " buy",
+    "p": 0.019419627264142036,
+    "allowed": false
+   },
+   {
+    "token": " walk",
+    "p": 0.0115522351115942,
+    "allowed": false
+   },
+   {
+    "token": " NONE",
+    "p": 0.0077619003131985664,
+    "allowed": false
+   },
+   {
+    "token": " **",
+    "p": 0.0067294323816895485,
+    "allowed": false
+   }
+  ],
+  "best_allowed": {
+   "token": "none",
+   "p": 0.00015034701209515333,
+   "rank": 65
+  },
+  "allowed_mass": 0.00018794868868010642
+ },
+ "at_argument": {
+  "top": [
+   {
+    "token": "umb",
+    "p": 0.993183434009552,
+    "allowed": true
+   },
+   {
+    "token": "UMB",
+    "p": 0.004497874993830919,
+    "allowed": false
+   },
+   {
+    "token": "um",
+    "p": 0.0008280037436634302,
+    "allowed": true
+   },
+   {
+    "token": "under",
+    "p": 0.0005267520900815725,
+    "allowed": false
+   },
+   {
+    "token": "UM",
+    "p": 0.00041364884236827493,
+    "allowed": false
+   },
+   {
+    "token": " Umb",
+    "p": 9.659829083830118e-05,
+    "allowed": false
+   },
+   {
+    "token": " umbrella",
+    "p": 3.91626417695079e-05,
+    "allowed": false
+   },
+   {
+    "token": "ung",
+    "p": 3.295988790341653e-05,
+    "allowed": false
+   },
+   {
+    "token": "cha",
+    "p": 2.6279969461029395e-05,
+    "allowed": true
+   },
+   {
+    "token": "ul",
+    "p": 2.5784749595914036e-05,
+    "allowed": false
+   }
+  ],
+  "best_allowed": {
+   "token": "umb",
+   "p": 0.993183434009552,
+   "rank": 1
+  },
+  "allowed_mass": 0.9940582293634721
+ },
+ "openers": [
+  " walk(",
+  " give(",
+  " sell(",
+  " hack(",
+  " quest(",
+  " call(",
+  " none"
+ ],
+ "fits_at_start": [
+  " ",
+  " w",
+  " wa",
+  " wal",
+  " walk",
+  " g",
+  " gi",
+  " give",
+  " s",
+  " se",
+  " sel",
+  " sell",
+  " h",
+  " ha",
+  " hac",
+  " hack",
+  " q",
+  " qu",
+  " que",
+  " ques",
+  " quest",
+  " c",
+  " ca",
+  " cal",
+  " call",
+  " n",
+  " no",
+  " non",
+  " none"
+ ]
+}

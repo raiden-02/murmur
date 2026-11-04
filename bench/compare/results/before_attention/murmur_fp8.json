@@ -1,0 +1,39 @@
+{
+ "decode_tokens_per_second": 261.4799436679914,
+ "engine": "Murmur",
+ "first_reply": "Priya had always been fascinated by the idea of augmenting her senses. As a child, she had spent countless hours poring over old science books and watching documentaries on the human body. She had always been drawn to the idea of improving her own abilities, and when she turned eighteen, she decided to take the plunge.\n\nShe had scoured the internet for information on how to get the implants, and had found a small, unassuming van that advertised second-hand optic implants. She had driven to the van, and had been greeted by a gruff-looking man who had asked her to fill out a form. Priya had filled it out quickly, and had handed it to him.\n\nThe man had taken it to the back of the van, and had come back with a small box. He had handed it to her, and she had carefully opened it. Inside was a small, sleek optic implant, with a sleek, black casing. She had carefully placed it in her eye, and had felt a strange tingling sensation as it began to work.\n\nOver the next few weeks, Priya had been on a constant quest to find a way to improve her vision. She had scoured the internet for information on how to get the implants, and had found a small,",
+ "format": "fp8",
+ "prompt_tokens": 377,
+ "throughput": [
+  {
+   "prompt_tokens": 382,
+   "requests": 1,
+   "seconds": 0.9937053,
+   "tokens": 256,
+   "tokens_per_second": 257.6216510065912
+  },
+  {
+   "prompt_tokens": 3004,
+   "requests": 8,
+   "seconds": 1.2862734,
+   "tokens": 2048,
+   "tokens_per_second": 1592.1964957061227
+  },
+  {
+   "prompt_tokens": 11996,
+   "requests": 32,
+   "seconds": 2.3315326,
+   "tokens": 8192,
+   "tokens_per_second": 3513.5687144155736
+  },
+  {
+   "prompt_tokens": 24002,
+   "requests": 64,
+   "seconds": 3.6408918,
+   "tokens": 16384,
+   "tokens_per_second": 4499.996401980416
+  }
+ ],
+ "ttft_ms": 19.8522,
+ "weight_gb": 1.547337216
+}

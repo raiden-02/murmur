@@ -1,0 +1,39 @@
+{
+ "engine": "vLLM 0.28.0",
+ "format": "fp8",
+ "cuda_graphs": true,
+ "ttft_ms": 18.01163799999017,
+ "prompt_tokens": 377,
+ "decode_tokens_per_second": 165.82460164438797,
+ "first_reply": "Priya had always been fascinated by the idea of memory implants. As a young woman, she had spent countless hours poring over scientific journals and online forums, trying to understand the potential of such technology. She had even considered the possibility of getting them herself, but the cost had been prohibitive. It wasn't until she stumbled upon a van in the Lower Wards, selling second-hand implants, that she finally had the opportunity to make her dream a reality.\n\nThe van was parked on the side of Shun Street, its windows partially obscured by a tarpaulin. Priya had heard rumors of it, but she had never actually seen it before. As she approached, she could see the van was loaded with various medical equipment and tools, all of which seemed to be related to the implants. She approached the driver, a middle-aged man with a gruff demeanor, and asked if he had any spare implants for sale.\n\nThe man, who called himself Mr. Patel, was hesitant at first, but eventually agreed to sell her a few. Priya was overjoyed and quickly made her way to the back of the van, where she found a variety of implants of different sizes and shapes. She carefully selected a pair of optic implants, which were designed to",
+ "throughput": [
+  {
+   "requests": 1,
+   "tokens_per_second": 167.9863788139764,
+   "seconds": 1.523933081999985,
+   "tokens": 256,
+   "prompt_tokens": 382
+  },
+  {
+   "requests": 8,
+   "tokens_per_second": 1221.0792143027454,
+   "seconds": 1.6772048659999825,
+   "tokens": 2048,
+   "prompt_tokens": 3004
+  },
+  {
+   "requests": 32,
+   "tokens_per_second": 3816.66424876575,
+   "seconds": 2.082708743000012,
+   "tokens": 7949,
+   "prompt_tokens": 11996
+  },
+  {
+   "requests": 64,
+   "tokens_per_second": 6293.88389931163,
+   "seconds": 2.5645531850000225,
+   "tokens": 16141,
+   "prompt_tokens": 24002
+  }
+ ]
+}

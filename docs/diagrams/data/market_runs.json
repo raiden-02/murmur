@@ -1,0 +1,38 @@
+{
+ "setup": "murmur-lab market, 30 NPCs talking non-stop for 30 s, player asks every 2 s, 1 GB KV cache",
+ "before": {
+  "label": "conversations grow without limit; anyone may evict anyone",
+  "tokens_per_second": 375,
+  "median_batch": 8,
+  "evictions": 1969,
+  "player_ttft_p99_ms": 46.4
+ },
+ "after": {
+  "label": "960-token memory per NPC; waiting conversations never evict running ones",
+  "tokens_per_second": 1424,
+  "median_batch": 30,
+  "evictions": 0,
+  "player_ttft_p99_ms": 30.5,
+  "player_ttft_p50_ms": 18.7,
+  "step_p50_ms": 17.0,
+  "step_p99_ms": 33.2
+ },
+ "ten_minutes": {
+  "label": "the final engine, 10 minutes, 298 player questions",
+  "tokens_per_second": 1402,
+  "median_batch": 30,
+  "evictions": 0,
+  "step_p50_ms": 17.1,
+  "step_p99_ms": 36.0,
+  "player_ttft_p50_ms": 22.1,
+  "player_ttft_p99_ms": 38.4,
+  "player_ttft_max_ms": 41.1
+ },
+ "one_hour": {
+  "label": "one hour non-stop, before the priority-budget fix",
+  "steps": 201481,
+  "generated_tokens": 5655206,
+  "pages_free_after": "1170 / 1170",
+  "player_ttft_p99_ms": 401.6
+ }
+}

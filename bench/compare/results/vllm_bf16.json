@@ -1,0 +1,39 @@
+{
+ "engine": "vLLM 0.28.0",
+ "format": "bf16",
+ "cuda_graphs": true,
+ "ttft_ms": 17.270289000009598,
+ "prompt_tokens": 377,
+ "decode_tokens_per_second": 182.72020574679425,
+ "first_reply": "Priya had always been fascinated by the idea of memory implants. As a young woman, she had spent countless hours poring over scientific journals and online forums, trying to understand the potential of such technology. She had always been drawn to the idea of enhancing her own abilities, to give her a leg up in the competitive world of Neo Kowloon.\n\nOne day, she stumbled upon a van in the Lower Wards, parked on the side of the road. The van was old and dilapidated, but it was filled with the most amazing equipment she had ever seen. Priya knew that she had found her chance to make a real difference in the world.\n\nShe approached the van, her heart pounding with excitement. Inside, she found a stack of second-hand optic implants, each one carefully wrapped in plastic and labeled with the name of the person who had purchased them. Priya knew that she had to act fast if she wanted to make a real difference.\n\nShe spent the next few days carefully selecting the implants, making sure to choose ones that would work best for her own needs. She knew that she wanted to use the implants to improve her own abilities, but she also wanted to make a real difference in the world. She knew that she could use the implants to",
+ "throughput": [
+  {
+   "requests": 1,
+   "tokens_per_second": 181.55586441218293,
+   "seconds": 1.4100343209999977,
+   "tokens": 256,
+   "prompt_tokens": 382
+  },
+  {
+   "requests": 8,
+   "tokens_per_second": 1236.6962297410869,
+   "seconds": 1.656025102000001,
+   "tokens": 2048,
+   "prompt_tokens": 3004
+  },
+  {
+   "requests": 32,
+   "tokens_per_second": 3835.311986096366,
+   "seconds": 2.1359409690000035,
+   "tokens": 8192,
+   "prompt_tokens": 11996
+  },
+  {
+   "requests": 64,
+   "tokens_per_second": 6076.87683674404,
+   "seconds": 2.696121781000002,
+   "tokens": 16384,
+   "prompt_tokens": 24002
+  }
+ ]
+}

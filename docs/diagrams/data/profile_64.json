@@ -1,0 +1,38 @@
+{
+ "source": "Nsight Systems, `murmur-lab compare --weights fp8 --batch 64` (the 64-request workload after an 8-request warm-up): GPU kernel time in ms, by kind",
+ "runs": [
+  {
+   "name": "before",
+   "ms": {
+    "matrix multiplies": 1686.7,
+    "FP8 activation scaling": 391.8,
+    "decode attention": 936.1,
+    "prompt attention": 664.4,
+    "everything else": 95.4
+   },
+   "tokens_per_second": 4500
+  },
+  {
+   "name": "decode attention reworked",
+   "ms": {
+    "matrix multiplies": 1582.2,
+    "FP8 activation scaling": 372.2,
+    "decode attention": 574.3,
+    "prompt attention": 632.5,
+    "everything else": 92.7
+   },
+   "tokens_per_second": 5187
+  },
+  {
+   "name": "prompt attention on tensor cores",
+   "ms": {
+    "matrix multiplies": 1636.1,
+    "FP8 activation scaling": 371.5,
+    "decode attention": 591.1,
+    "prompt attention": 66.4,
+    "everything else": 89.2
+   },
+   "tokens_per_second": 5945
+  }
+ ]
+}

@@ -1,0 +1,83 @@
+{
+ "question": "Can I buy something from you?",
+ "reply": "Sure, I've got some interesting items. How about a new optic implant? It might help with those corporate drones.",
+ "rows": [
+  {
+   "text": " drones",
+   "by": "speech",
+   "allowed": 146618
+  },
+  {
+   "text": ".",
+   "by": "speech",
+   "allowed": 146618
+  },
+  {
+   "text": "<|im_end|>",
+   "by": "stop",
+   "allowed": 146618
+  },
+  {
+   "text": "\n",
+   "by": "lead_in"
+  },
+  {
+   "text": "ACTION",
+   "by": "lead_in"
+  },
+  {
+   "text": ":",
+   "by": "lead_in"
+  },
+  {
+   "text": " sell",
+   "by": "grammar",
+   "allowed": 29
+  },
+  {
+   "text": "(",
+   "by": "grammar",
+   "allowed": 37
+  },
+  {
+   "text": "optic",
+   "by": "grammar",
+   "allowed": 64
+  },
+  {
+   "text": " implant",
+   "by": "forced"
+  },
+  {
+   "text": ",",
+   "by": "forced"
+  },
+  {
+   "text": " ",
+   "by": "forced"
+  },
+  {
+   "text": "5",
+   "by": "grammar",
+   "allowed": 9
+  },
+  {
+   "text": "0",
+   "by": "grammar",
+   "allowed": 11
+  },
+  {
+   "text": "0",
+   "by": "grammar",
+   "allowed": 11
+  },
+  {
+   "text": ")",
+   "by": "forced"
+  },
+  {
+   "text": "<|im_end|>",
+   "by": "forced"
+  }
+ ]
+}

@@ -1,0 +1,129 @@
+{
+ "formats": [
+  "bf16",
+  "fp8",
+  "int4"
+ ],
+ "context": 1024,
+ "prefill_tokens": 512,
+ "bf16": {
+  "weights_gb": 3.09,
+  "decode_tokens_per_second": 163.9,
+  "prefill_ms": 36.5,
+  "batch": {
+   "1": {
+    "ms_per_step": 6.1,
+    "tokens_per_second": 164.0
+   },
+   "2": {
+    "ms_per_step": 6.64,
+    "tokens_per_second": 301.0
+   },
+   "4": {
+    "ms_per_step": 6.78,
+    "tokens_per_second": 590.0
+   },
+   "8": {
+    "ms_per_step": 7.0,
+    "tokens_per_second": 1143.0
+   },
+   "16": {
+    "ms_per_step": 7.56,
+    "tokens_per_second": 2117.0
+   },
+   "32": {
+    "ms_per_step": 9.46,
+    "tokens_per_second": 3382.0
+   },
+   "64": {
+    "ms_per_step": 12.12,
+    "tokens_per_second": 5279.0
+   }
+  },
+  "market": {
+   "tokens_per_second": 1289.0,
+   "ttft_p50_ms": 17.9,
+   "ttft_p99_ms": 38.0
+  }
+ },
+ "fp8": {
+  "weights_gb": 1.55,
+  "decode_tokens_per_second": 282.1,
+  "prefill_ms": 28.9,
+  "batch": {
+   "1": {
+    "ms_per_step": 3.45,
+    "tokens_per_second": 290.0
+   },
+   "2": {
+    "ms_per_step": 3.9,
+    "tokens_per_second": 513.0
+   },
+   "4": {
+    "ms_per_step": 4.0,
+    "tokens_per_second": 1001.0
+   },
+   "8": {
+    "ms_per_step": 4.05,
+    "tokens_per_second": 1975.0
+   },
+   "16": {
+    "ms_per_step": 4.6,
+    "tokens_per_second": 3476.0
+   },
+   "32": {
+    "ms_per_step": 6.01,
+    "tokens_per_second": 5321.0
+   },
+   "64": {
+    "ms_per_step": 8.17,
+    "tokens_per_second": 7838.0
+   }
+  },
+  "market": {
+   "tokens_per_second": 1673.0,
+   "ttft_p50_ms": 14.5,
+   "ttft_p99_ms": 31.7
+  }
+ },
+ "int4": {
+  "weights_gb": 0.82,
+  "decode_tokens_per_second": 359.0,
+  "prefill_ms": 38.7,
+  "batch": {
+   "1": {
+    "ms_per_step": 2.46,
+    "tokens_per_second": 406.0
+   },
+   "2": {
+    "ms_per_step": 2.83,
+    "tokens_per_second": 707.0
+   },
+   "4": {
+    "ms_per_step": 2.96,
+    "tokens_per_second": 1353.0
+   },
+   "8": {
+    "ms_per_step": 3.03,
+    "tokens_per_second": 2642.0
+   },
+   "16": {
+    "ms_per_step": 3.49,
+    "tokens_per_second": 4589.0
+   },
+   "32": {
+    "ms_per_step": 4.57,
+    "tokens_per_second": 7003.0
+   },
+   "64": {
+    "ms_per_step": 8.29,
+    "tokens_per_second": 7716.0
+   }
+  },
+  "market": {
+   "tokens_per_second": 1136.0,
+   "ttft_p50_ms": 21.2,
+   "ttft_p99_ms": 42.3
+  }
+ }
+}

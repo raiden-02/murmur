@@ -1,0 +1,219 @@
+Murmur
+A rainy cyberpunk night market where every NPC thinks on a GPU inference engine written from scratch in C++23 and CUDA.
+You walk the street and type to anyone. They answer token by token, remember you, and act on what they say. Toggle the X-ray view and the engine's internals appear on top of the town: KV-cache pages filling and evicting, NPCs joining and leaving the batch, and the GPU time each frame spends on rendering versus thinking.
+Status: the market talks and acts. 32 stallholders chatter on their own, all generated together on Murmur's own engine (Qwen2.5-1.5B-Instruct) with a paged KV cache, prefix sharing, continuous batching and tensor-core attention, while you can walk up to any of them and get an answer in a few tens of milliseconds. Every reply ends with an action written under a grammar, so it is always one the game can run: NPCs walk to storefronts, wave each other over, hack signs, and give, sell or hand you deliveries. The weights run in FP8 by default, with BF16 and INT4 a key press away, and a 0.5B draft model can guess words ahead. On the same model, GPU and workload, Murmur's first token arrives 45% sooner than vLLM's, one conversation decodes twice as fast, and 64 at once run 17% faster (comparison).
+Where it stands
+What the engine does
+Performance is reported against the hardware limits (memory bandwidth and tensor-core throughput) and checked for correctness against a reference implementation.
+Reading the code
+docs/CODE_TOUR.md: follows one message from the keyboard to Mei's reply through the source, then the KV pages, the weight formats and the actions, with links to the exact lines.
+docs/correctness.md: how the engine is checked against the Hugging Face reference, layer by layer and token by token, and what is checked where there is no reference.
+docs/decode_performance.md: where the decode time goes for one conversation, measured against the hardware limit.
+docs/serving_performance.md: many conversations at once: batching, scheduling and memory, measured.
+docs/quantization.md: FP8 and INT4 weights and a smaller KV cache: speed, capacity and quality for each format, and which one to use.
+docs/actions_and_speculation.md: NPC actions under a grammar, jump-forward and speculative decoding, measured.
+docs/comparison.md: Murmur against vLLM and llama.cpp on the same workload, the profile that showed where it lost, and the attention kernels rewritten because of it.
+Requirements
+Windows with Visual Studio 2022 17.14+ or 2026, Desktop development with C++ (MSVC, Windows SDK, C++ CMake tools)
+NVIDIA GPU with compute capability 8.9 (developed on an RTX 4080 SUPER)
+CUDA Toolkit (the game, murmur-lab and the tests need it)
+The model, about 3.1 GB (Apache 2.0): download Qwen2.5-1.5B-Instruct into models/qwen2.5-1.5b-instruct/, or point MURMUR_MODEL_DIR at a copy. With Python available:
+Optional, for speculative decoding: Qwen2.5-0.5B-Instruct (about 1 GB, Apache 2.0) in models/qwen2.5-0.5b-instruct/ (or MURMUR_DRAFT_MODEL_DIR).
+Build
+Open this folder in Visual Studio (File > Open > Folder), choose the x64 Debug or x64 Release preset, then select a startup item:
+murmur.exe: the game (run it from the repository root so it finds models/)
+murmur-lab.exe: GPU benchmarks (decode, batch, market, matvec, actions, speculative, compare, ...), murmur-lab schedule to watch continuous batching step by step, murmur-lab chat to talk to Mei in the terminal and murmur-lab generate for a timed reply
+murmur-host-tests.exe (no GPU needed, built even without CUDA) and murmur-tests.exe: unit tests; the ones that need the model or reference data skip themselves when those are absent. Timing budgets only fail a run with MURMUR_TIMING_TESTS=1
+From any terminal (Cursor, VS Code, Windows Terminal), in the repository root:
+-Run takes game, demo (the hands-free run below), chat, schedule, batch, market, calibrate, quality, actions, speculative, compare (the murmur-lab tools) or tests, builds only that program and starts it from the repository root. Every program answers --help with its flags (murmur.exe --help, murmur-lab.exe --help, murmur-lab.exe market --help), and an unknown flag is an error.
+The compiler, linker and Ninja come with Visual Studio and are only on PATH inside its developer environment, so a bare cmake --preset in an ordinary terminal fails with unable to find a build program corresponding to "Ninja". build.cmd loads that environment first (tools/vs-env.ps1); dot-source the script (. .\tools\vs-env.ps1) to load it into the current shell. In Cursor or VS Code the workspace terminal loads it on its own, and CMake Tools uses it for the presets.
+The first configure downloads raylib 6.0, GoogleTest 1.17 and nlohmann/json 3.12.
+Reference data
+reference/dump_reference.py runs the same model with Hugging Face Transformers (FP32, CPU) and saves every intermediate tensor, which the tests compare against layer by layer:
+Controls
+WASD or arrow keys to walk. Stop at any stall and press E to talk to whoever runs it, type, Enter to send, Escape to close the chat box. Walking away mid-reply cancels it. Tab opens the X-ray. Q cycles the weights between BF16, FP8 and INT4, and K switches the KV cache between BF16 and FP8, while everyone keeps talking. When an NPC offers you something, B buys it; deliveries an NPC hands you complete when you talk to the right NPC. G lets the draft model guess ahead (if it's downloaded). Close the window to quit.
+murmur.exe --weights int4 --kv fp8 picks the starting formats. INT4 is at its best after murmur-lab calibrate (once, about 30 s), which measures which weights matter most and saves it next to the model.
+murmur.exe --demo "<message>" --warmup 15 --xray --screenshot shot.png lets the market chatter for 15 seconds, asks Mei the message with no input, and reports her reply, the frame rate and her time to first word.
+Checking the engine against a reference
+How Murmur shows that its from-scratch kernels compute the same model as the standard implementation, and what is checked when the engine trades exactness for speed.
+Setup: Qwen2.5-1.5B-Instruct, RTX 4080 SUPER, Release build. The reference is the same model run by Hugging Face Transformers in FP32 on the CPU (dump_reference.py).
+The answer key
+reference/dump_reference.py runs two prompts through the reference model and saves, with forward hooks, every intermediate tensor the engine reimplements: the embedding, ten tensors per layer (the norms, q, k and v, attention's weighted mix of values, the attention and MLP outputs, the MLP activation, the layer output), the final norm and the logits. That's 283 tensors per prompt, plus the greedy continuation (32 tokens) and the exact token ids of 17 tokenizer cases.
+The two prompts are a plain sentence ("The capital of France is") and Mei's chat prompt (a system prompt, a question, the chat template).
+Layer by layer
+The engine reports its own intermediate tensors to an observer, which compares each with the reference's tensor of the same name. Fused kernels never write some of them (the norms run inside the matrix products, the MLP's output is added straight into the layer output), so the engine reports 170 per prompt: the embedding, the logits, and per layer q, k, v, the attention mix, the MLP activation and the layer output.
+The error of a checkpoint is the largest absolute difference divided by the largest reference magnitude: scale-free, so one limit works for every tensor.
+Data: reference_errors.json, every checkpoint of both prompts.
+The FP32 path matches to rounding. FP32 sums in a different order than PyTorch's drift by about 10⁻⁵; a real bug (a wrong index, a missing scale) shows up as an error near 1 from the broken layer on. The limit sits 28× above the worst case and far below any bug.
+Errors don't pile up. Both bands stay flat from the first layer to the last: 28 layers of rounding don't compound into anything a reader of the logits would notice.
+Tensor cores round every activation to 16 bits before the matrix products of prompt rows and batched decoding. That costs two orders of magnitude of error (the model carries a few very large activations, and BF16 keeps only 8 bits of mantissa), so those paths have their own limit, and the test also requires the predicted next token to be unchanged.
+Token by token
+Greedy decoding must produce exactly the reference's 32 tokens for both prompts, on the FP32 path. The first differing token fails the test with its position.
+The tokenizer must produce exactly Hugging Face's token ids for 17 cases: one per branch of the pre-tokenizer's pattern (spaces, numbers, contractions, line endings, Unicode, emoji, special tokens) plus the model's README and license as long real text. Decoding must invert encoding, and the streaming decoder must never split a character between two pieces of a reply.
+The chat template must build the same prompt text as Hugging Face's, and text the player types can't forge the template's markers.
+Where there is no reference
+Faster paths are checked against the engine's own exact path, with the same tolerance discipline:
+Smaller weight formats can't match exactly; their loss is measured against the original model instead (KL divergence and perplexity, quantization.md). The six engine runs at 8 bits or more on the comparison workload agree word for word with each other up to a genuine near-tie in the reference model (comparison.md).
+The kernel tests also run clean under compute-sanitizer: memcheck (every memory access in bounds), racecheck (no two threads clash over shared memory) and synccheck (barriers reached by every thread).
+Running the checks
+Tests that need the model or the reference dumps skip themselves, with the reason, when those files are absent. To redraw the diagram from a fresh run:
+Single-stream decode performance
+How fast Murmur generates one conversation's tokens, how close that is to what the hardware allows, and where the remaining time goes.
+Setup. RTX 4080 SUPER (Ada, 80 SMs, 736 GB/s peak memory bandwidth), driver 616.56, CUDA 13.4, Windows 11, Release build. Model: Qwen2.5-1.5B-Instruct, BF16 weights (3.09 GB) with FP32 activations and an FP32 KV cache. Numbers are from murmur-lab decode: greedy decoding after a prompt of the stated length, best of 4 runs of 32 steps, on an otherwise idle GPU.
+The ceiling
+Generating one token reads every weight once and every cached key and value once. Nothing can make that faster than
+At 1,024 tokens of context that is (3.09 GB + 58 MB) / 736 GB/s = 4.28 ms, or 234 tokens/s. Results below are reported as a share of this ceiling.
+Results, stage by stage
+BF16 weights. The checkpoint is BF16; keeping it that way halves the bytes per token. Weights are widened to FP32 in registers, so results are unchanged (every reference check still passes).
+Matrix-vector kernel with fusion. One-token decode is y = W·x per layer, about one multiply-add per weight loaded, so the kernel streams weights with 16-byte loads and several loads in flight per lane. RMSNorm runs as a prologue; bias, residual add and SwiGLU run as epilogues; q/k/v and gate/up weights are stacked. A decode layer went from 20 launches to 6.
+Split-K attention. The FP32 version used one block per query head (12 blocks for 80 SMs). Decode attention now splits the context over up to 128 blocks per KV head, reads each key and value once for the 6 query heads sharing it, and merges slices with exact online-softmax rescaling. Halving the weight bytes had made the old kernel the bottleneck at long contexts.
+CUDA Graphs. Each decode step (~200 kernels) is recorded once and replayed with a single launch; the token, position and context length are read from GPU memory, filled from pinned host memory by the graph's first copy.
+Where the time goes now
+Median kernel times from Nsight Systems at 1,024 tokens of context, per token:
+Explaining the remaining 20%
+Large matrix-vector products run at 89–94%. That is close to what streaming kernels reach on this GPU; DRAM refresh, read/write turnarounds and page switches account for most of the rest.
+The two small products run at ~65% (6 MB for q/k/v, 4.7 MB for o_proj per layer). Each lasts 10–13 µs, so ramp-up and the tail of the last wave of blocks are a large share of their runtime. Overlapping them with their neighbours (programmatic dependent launch) is the next lever: up to ~0.2 ms.
+Split attention runs at 29% of peak at this length: slices of 16 keys per block are too small to keep enough bytes in flight. It's 5% of the step at 1,024 tokens. An FP8 KV cache halves its bytes again.
+Host time is down to ~0.1 ms per token thanks to graphs: one graph launch, an argmax readback and the stream synchronization.
+Sampling is not included above. These runs decode greedily on the GPU. In the game, Mei samples (temperature, top-k, top-p) on the CPU, which adds a 600 KB logits copy and a top-k pass over 151,665 candidates per token, about 0.7 ms (~170 tokens/s in game). Moving sampling to the GPU removes most of it.
+Where this leads
+Batch-1 decode sits far left of the roofline's ridge (~1 FLOP per byte against a ridge of ~71), so at this point it can only get faster by moving fewer bytes or by reusing each byte for more work.
+Reproducing
+Another program rendering on the same GPU (a game editor, for example) slows these runs down; the benchmarks report the best of several runs for that reason, but measure on an idle GPU for publishable numbers.
+Serving many conversations
+How Murmur runs the market's 32 NPCs on one GPU at once: a paged KV cache with prefix sharing, continuous batching with chunked prefill, tensor-core matrix products for batched rows, sampling on the GPU, and a memory policy for when the cache fills.
+Setup: RTX 4080 SUPER (Ada, 80 SMs, 16 GB, 736 GB/s), driver 616.56, CUDA 13.4, Release build, Qwen2.5-1.5B-Instruct with BF16 weights (3.09 GB) and an FP32 KV cache of 1 GB (1,170 pages of 16 tokens).
+Batched decode: throughput against latency
+murmur-lab batch: B conversations, each with 512 tokens already cached, generate one token per step together. The step time is each conversation's time per token; B divided by it is the total throughput. A step reads every weight once whatever B is, plus every conversation's keys and values, so the ceiling for B tokens is B × 736 GB/s ÷ (weight bytes + B × KV bytes).
+One weight read, many tokens. From 1 to 64 conversations the total throughput grows 32× while each conversation slows by only 2×.
+One conversation runs at 84% of its ceiling: a single row uses the custom BF16 matrix-vector kernel (decode report).
+Two or more run at about 70%. Batched rows use cuBLAS's BF16 matrix multiply on tensor cores. For a handful of rows that is a very wide, very short product, and cuBLAS streams the weights less efficiently than the custom kernel does for one row. A matrix-vector kernel that handles a few rows at once is the obvious next step for small batches.
+At 64 conversations the per-conversation keys and values (64 × 540 tokens × 57 KB = 2.0 GB) are two fifths of the bytes per step, and the math starts to count (64 FLOPs per weight byte, close to the ridge at 71). Batching moves decode to the right on the roofline, as intended.
+Continuous batching and chunked prefill
+Every step the engine plans again which conversations run and how many tokens each: higher priority first; within a priority, decoding conversations before prompts; prompts in arrival order and cut into chunks that fit a per-step budget (256 tokens in the game). murmur-lab schedule prints a five-conversation run with a 24-token budget:
+Conversations join the batch the step their message arrives and leave the step their reply ends; in step 6 the player's prompt takes the whole budget and Rafael's waits a step.
+The market under load
+murmur-lab market --seconds 600: 30 NPCs (the game's personas, all starting with the same 324-token city lore) talk non-stop for 10 minutes, each starting a new line as soon as the last ends; the player asks a question every 2 s at higher priority. Another program shared the GPU on and off during the runs, so the tails are, if anything, pessimistic.
+The player's first token arrives within at most the rest of the current step plus the next one, because steps can't be interrupted and the player's prompt runs at the front of the next step:
+Memory
+Prefix sharing. The 32 NPC system prompts are 349 to 365 tokens each, the first 320 of them the same city lore. Shared full pages put all 32 in 104 pages instead of 724. Pages that no conversation uses stay cached until memory runs short, so a conversation that comes back after an eviction often finds its history still there.
+The memory policy. The first version of the scheduler let any conversation evict any other of equal priority, and let conversations grow without limit. Under the same 30-NPC load (30 s runs) the cache thrashed:
+Two changes fixed it:
+A conversation waiting to start may only take free memory, idle conversations' pages, or the pages of lower-priority ones; it never evicts an equally important conversation in the middle of a reply. Only a conversation already generating its reply may.
+Each NPC remembers at most 960 tokens: when a new message wouldn't fit, the oldest turns are forgotten and the system prompt is kept (usually straight from the prefix cache).
+A one-hour run then found a tail: the player's time to first token reached 402 ms at p99 (over 1,748 questions). The benchmark's player conversation had no memory budget, so every few dozen questions it forgot old turns and recomputed about 1,900 tokens of history at the ordinary 256-token prompt budget per step. Giving the player the same 960-token memory as an NPC (in the game the player talks inside an NPC's conversation), and letting a higher-priority prompt use the whole step, brought the p99 to the 38 ms above.
+Leaks. The allocator's books are checked three ways:
+a test replays 20,000 random allocate, share, publish, truncate and free operations and checks after every one that each page is owned or free exactly once;
+every engine test ends by freeing all pages and checking;
+the market benchmark ran non-stop for an hour: 201,481 steps and 5.66 million generated tokens, after which all 1,170 pages were free again.
+Correctness
+The paged, batched engine is checked against the reference. All 170 checkpoints and the greedy reply still match Hugging Face on the exact FP32 path; batched steps match the same sequences run one at a time to 2 × 10⁻⁴; a shared prefix gives the same logits as computing it.
+Tensor-core rows round activations to BF16. At the worst layer the activations drift up to 4.6% from the FP32 reference (relative to the tensor's largest value), and the predicted next token is unchanged on both reference prompts. The reference tests keep the exact path.
+GPU sampling picks the same token as the CPU sampler for the same random draw, across greedy, top-k, top-p and repetition-penalty settings.
+compute-sanitizer memcheck, racecheck and synccheck report no errors on the paged attention kernels, the batched forward pass, the sampler and the engine tests. 126 tests pass in Debug and Release.
+What's next
+A smaller KV cache. It is FP32 (57 KB per token); BF16 would double the market's memory and FP8 quadruple it.
+A matrix-vector kernel for a few rows at once, for the 2 to 8 conversations where the tensor-core GEMM reaches only 70%.
+CUDA graphs for mixed steps (decode rows plus prompt chunks); today only decode-only steps are replayed from a graph.
+Quantized weights (FP8, INT4): fewer bytes per step for every conversation at once.
+Smaller numbers: weight and KV-cache formats
+How much speed, NPC capacity and quality each storage format buys in Murmur, and which one the game uses. The weights can be BF16 (as shipped), FP8 or INT4; the KV cache FP32, BF16 or FP8. Everything is measured on the machine below.
+Setup: RTX 4080 SUPER (Ada, 80 SMs, 16 GB, 736 GB/s), driver 616.56, CUDA 13.4, Release build, Qwen2.5-1.5B-Instruct. A browser and an editor shared the GPU during the speed runs (10–25% of its SMs), so absolute speeds are a little low; comparisons between formats were measured back to back. Reproduce with murmur-lab calibrate, murmur-lab quality and python docs/diagrams/measure_quant_speed.py.
+The formats
+The checkpoint stays BF16 on disk. ModelWeights::Upload converts every matrix on the GPU while loading (about two seconds), embedding table included. INT4 uses the model's channel importance (importance.bin, made once by murmur-lab calibrate from 80 market dialogues, 33,600 tokens) when it exists.
+Quality
+murmur-lab quality runs the original model (BF16 weights, FP32 KV cache, exact FP32 matrix products) and every candidate over the same text, and compares their next-token distributions at every position: 10,228 tokens of prose (a frozen excerpt of these docs, reference/eval/prose.txt) and 16 market dialogues (NPCs and questions disjoint from calibration), 16,739 positions in all.
+"As served" is the default multi-row math: GemmF16 for up to 48 rows, the format's fastest path for longer prompt chunks (cuBLAS for BF16, FP8 tensor cores for FP8). The quality runs feed 512-token windows, so they measure the prompt path; decode always multiplies one row at a time in FP32.
+FP8 weights cost 1.2% perplexity on their own, 2% once prompt rows run on FP8 tensor cores.
+INT4 started at 23% worse perplexity with plain round-to-nearest. A clipping search per group brought that to 22%, and weighting the error by channel importance to 8.9%. Importance does the heavy lifting: a handful of input channels in the early layers' down projections are driven millions of times harder than the rest.
+Identical replies are a harsh test: one early word changes everything after it. Greedy replies to the 16 dialogues share their first 28 tokens on average with BF16 tensor cores, 6 with FP8 and 1 with INT4. Reading them, FP8's replies are as good as the original's; INT4's are in character but drift more.
+Speed
+Single-stream decode (1,024 tokens of context) and batched decode (512 tokens of context each):
+Up to about 16 conversations a step is bound by reading the weights, and the formats scale almost with their bytes: FP8 1.6–1.7×, INT4 2.2×.
+At 64 the products are bound by math. Ada's GeForce tensor cores run FP16 with FP32 sums at half rate, and every format ends up near 8 ms per step. FP8 tensor cores (twice the FP16 rate) win there.
+One INT4 row reaches 62% of the bandwidth ceiling; BF16 and FP8 reach about 85% and 76%. Each INT4 weight needs more instructions to unpack, and the small matrices (the 2,048-row QKV, the 1,536-row output projection) are bound by latency, not bytes. Giving narrow formats more rows per warp raised INT4 from 46%.
+Prefill is bound by math, so INT4 doesn't help it: its weights are unpacked once per 128 rows (raised from 64, which took INT4 from 44.6 to 38.7 ms). FP8 tensor cores are the fastest prompt path.
+The market
+murmur-lab market --seconds 60 (30 NPCs talking non-stop, the player asking every 2 s), BF16 KV cache of 1 GB:
+Market steps mix 30 decode rows with prompt chunks of up to 256 tokens (the NPCs forget and recompute old turns), so prompt speed counts as much as decode speed. That puts INT4 behind BF16 here. The formats also generate different text, so the amount of recomputing differs a little between runs.
+Capacity
+The game reserves 3.75 GB for the model; the KV cache gets what the weights leave. An NPC's memory is 960 tokens.
+The X-ray in the game (Tab) shows the split as a bar and the cache as a page map whose squares shrink to fit. Q cycles the weights and K the cache while the market talks.
+The KV cache
+BF16 halves the FP32 cache at no measurable cost (mean KL 0.0002) and is the default.
+FP8 with one scale per token and head: with every layer in FP8, mean KL was 1.3 and perplexity nearly 4× worse. The first two layers' keys reach 318 and 102 (the others stay under 25); layer 0's attention scores spread over ±140, so its attention picks single tokens, and FP8's 3 mantissa bits moved those scores by up to 12. Keeping layers 0 and 1 in BF16 (7% more bytes) gives mean KL 0.006.
+What didn't work
+Plain round-to-nearest INT4 (23% worse perplexity) and clipping alone (22%): see Quality.
+An FP8 head for INT4 models (the tied embedding and output projection kept in FP8): mean KL 0.099 → 0.087 for 13% more bytes. Not worth it next to importance weighting.
+FP8 tensor cores for every batch size: cuBLASLt's FP8 product is slower than GemmF16 below about 48 rows (434 against 530 tokens/s for 2 conversations), and it is less accurate. It is now used only for prompt chunks.
+An FP8 KV cache in every layer: see The KV cache.
+Recommendation
+FP8 weights with a BF16 KV cache, the game's default:
+decode 1.7× faster than BF16 for one conversation and 1.6× for 16;
+prompts 1.3× faster on FP8 tensor cores;
+3.3× the NPC memories in the same budget;
+the best market throughput and player latency;
+for 2% perplexity, with replies that read as well as the original's.
+INT4 when memory is what runs out: 106 NPC memories (193 with an FP8 cache), and the fastest single conversation. It costs 9% perplexity, and its prompts are no faster than BF16's, so it loses in a prompt-heavy market.
+An FP8 KV cache when the cache is the limit: 1.8× the tokens for a small loss (mean KL +0.006). BF16 weights stay the reference.
+What's next
+A better INT4 quantizer: GPTQ (error compensation across a row) or AWQ (scaling salient channels), and smaller groups (64), to close more of the 9% gap.
+A faster INT4 tensor-core kernel: Marlin-style pre-shuffled weights loaded straight into fragment order, larger tiles, and a deeper pipeline, so prompts gain from INT4 too.
+INT4 matrix-vector for small matrices: several warps per row or programmatic dependent launch, so the 2,048- and 1,536-row products stop being bound by latency.
+FP8 activations without the first layers' cost: per-channel smoothing of the activations' outliers (SmoothQuant), so W8A8 holds FP8's weight-only quality.
+NPCs that act: constrained, jump-forward and speculative decoding
+Every NPC reply now ends with an action the game carries out. This report measures how the engine holds the model to the action grammar, what jump-forward saves, and what speculative decoding with a draft model does (and doesn't) buy on this hardware.
+RTX 4080 SUPER, Release build, Qwen2.5-1.5B-Instruct with FP8 weights and a BF16 KV cache unless noted. Other programs shared the GPU during some runs, so speeds carry a few percent of noise. Reproduce with murmur-lab actions and murmur-lab speculative (both take --json).
+The action grammar
+The grammar is built from the game's own lists (action_language.cpp): seven verbs, the ten storefronts, 22 items, the 32 NPCs, prices 1–999 and sign messages of up to 18 capitals.
+Valid actions
+All 32 market NPCs answer the same 8 requests ("Can I buy something from you?", "Do you have a job for me?", "Go and see what's happening at the docks", ...): 256 actions, sampled with the NPCs' settings (temperature 0.7, top-k 20, top-p 0.8).
+Free text that doesn't parse: sell(ITEM, PRICE), sell(KNIFE, 500), sell(SKINNY BAG, 500), walk(POWERS), sell(data shard, 100 credits), walk(Ramen), give(tea, 1).
+Action mix: under the grammar walk 56, call 28, hack 27, give 8, sell 7, quest 1, none 129; as free text (of those that parse) walk 55, call 25, give 4, none 131. The two mixes agree: the mask keeps the model's intent.
+Token boundaries
+The first version wrote the lead-in ACTION:  (ending in a space) and actions without a leading space. The model writes a word after a colon as one token with its space, so every token it preferred was masked:
+With the first framing the action mix was walk 22, quest 55 against free text's walk 55: the mask was choosing for the model. Jump-forward needs the same care: it must not write the action's leading space as a lone token, so a fixed last token that an allowed token extends is left to the model.
+Measured with Hugging Face Transformers on the same prompt (extract_action_data.py).
+Speculative decoding
+Draft model Qwen2.5-0.5B-Instruct (24 layers, 896 wide, same tokenizer), checked against its own reference (every checkpoint within 1e-3). Eight NPC replies, one conversation at a time, greedy unless noted.
+Why it doesn't pay: one draft step costs 1.97 ms against 3.58 ms for a plain step of the big model (FP8): 55%, where the parameter ratio would suggest 33%. Both models are small enough to be bound by launches and synchronization rather than bytes. With 48% of guesses kept, one guess yields 1.48 tokens per step for 1.97 + 4.13 ms: 4.1 ms per token against 3.6.
+Exactness: both models use the same random draw per position, so a guess is kept exactly when the big model would have chosen it. With BF16 weights every reply is identical to plain decoding. With FP8, 6 of 8 (sampled: 4 of 8): checking several rows at once goes through the tensor-core product, which rounds activations to FP16, while one row goes through the matrix-vector kernel, and near-ties can flip.
+Policy: the engine speculates only while at most 4 conversations decode, and the game starts with it off (G turns it on). In the game, with sampled NPCs and four guesses, 19% of guesses were kept.
+Scheduling under load
+The 32-NPC actions test found two bugs:
+Engine had no destructor, so the KV pages of conversations still open when an engine went away stayed referenced. The cache belongs to the Transformer and outlives the engine; every later engine had less memory, until none could make progress.
+The eviction rule (a reply may evict an equally important reply only once it is itself generating) deadlocks when every reply is still waiting for its first token and the cache is full. Replies are now ordered by when they were asked, and a reply may evict only newer replies of its priority, newest first. ConversationsThatFillTheCacheTogetherAllFinish reproduces the deadlock under the old rule.
+The 30-NPC market benchmark (60 s) after the change: no evictions, the player's first token at 24 ms p50 and 39 ms p99, every page free afterwards.
+In the game
+32 NPCs act on their own (walk to a storefront, wave someone over, hack a sign) and towards the player (give, sell, hand over a delivery). An NPC rests 20 s between errands of its own and stands still while talking to the player.
+The player buys offers with B, carries deliveries for credits, and each NPC hears what the player did as a stage direction in front of the next message.
+Words are masked too: no line breaks and no ( while an NPC speaks, so actions can't leak into speech.
+The X-ray counts every action, shows the share of action tokens the grammar wrote (about half), and how many of the draft model's guesses were kept.
+Murmur against vLLM and llama.cpp
+The same model, GPU and workload through three engines, the profile that showed where Murmur lost, the two attention kernels rewritten because of it, and the result.
+Setup
+Workload. 64 requests: a system prompt (a unique tag, then the market's city lore; 377 tokens with the chat template, counted by all three engines) and a request for a long story about one of the NPCs. Greedy, up to 256 tokens. The unique tag keeps any engine from reusing another request's cached prompt.
+Measures, from each engine's API: time to first token (1-token request, median of 5); decode (256-token request: (time − first-token time) / 255, median of 5); throughput (1, 8, 32 or 64 requests at once; generated tokens over wall time). All engines ran back to back on a quiet desktop; Murmur, run again at the end, was within 1.5% of its first run, and a second vLLM run within 2%.
+Same answers. The six 16-bit and 8-bit runs write the same greedy words for the first request until one token, where they split between " memory" (vLLM) and " augment" (Murmur, llama.cpp). The FP32 reference model gives those logits of 19.6442 and 19.6375 (near_tie.json): a genuine tie broken by each engine's rounding. Murmur INT4 departs earlier ("Priya had always been a bit of a loner"), the cost of 4-bit weights.
+Results
+Raw numbers: bench/compare/results.
+Where Murmur wins: FP8, at every concurrency. Against vLLM FP8 the first token arrives 45% sooner, one conversation decodes twice as fast (vLLM's FP8 is slower than its own BF16 there, 166 against 183), and 64 at once is 17% ahead. INT4 is the fastest single conversation of all (463 tokens/s), at INT4's quality cost (quantization.md).
+Level: BF16 for one conversation and 8 at once.
+Where Murmur loses: BF16 from 32 requests on, 82% of vLLM at 64. With short prompts it is 90% (short_*.json), so about half the gap grows with the prompt's length and half is in decoding. Hardware counters and the timeline found part of the decoding share (below): +5% at 64, included in this table.
+llama.cpp, as Ollama serves it, is close for one conversation and scales least with concurrency.
+What the profile showed
+Nsight Systems, the 64-request workload with FP8 weights, GPU kernel time by kind (profile_64.json):
+Decode attention must read every cached key and value once; at 64 conversations that's about 0.9 GB per step, 1.25 ms at full bandwidth, and it took 3.4 ms. It cut each sequence into up to 128 slices of 16 keys: right for one conversation, wasteful for 64, where every slice wrote a partial result 38% the size of what it read. It now uses fixed 64-key slices (partials 10% of the reads), 16-byte loads, unrolled passes so loads overlap, a warp per head for the softmax and shuffles to sum lanes. Fixed-size slices also keep it batch-invariant, which speculative decoding depends on (a batch-sized first version broke SampledRepliesFollowTheSameDraws).
+Prompt attention gave every (head, row) its own block re-reading every visible key, on CUDA cores: about 785 GFLOP at 1.2 TFLOPS. It is now FlashAttention-2 style: 64 query rows of one head per block, key and value tiles of 64 loaded once into shared memory as FP16, S = Q·Kᵀ and O += P·V with mma.sync, online softmax in registers, P passed from the S accumulators into the next MMA's fragments. A 64-row tile may span two prompts; the kernel walks each run of one prompt's rows separately. Quality as served is unchanged (BF16 mean KL 0.0002 against the original model, perplexity 29.80); a 512-token prompt went from 28.9 to 15.5 ms (FP8).
+Where the GPU waited
+With GPU performance counters enabled, Nsight Compute measured one 64-row BF16 decode step kernel by kernel (step_kernels.json); width is time, fill is the share of the memory bandwidth reached:
+The large multiplies (gate/up and down), decode attention and the vocabulary projection run at 77–88% of the bandwidth; the qkv and output projections, small enough that cuBLAS picks other kernels for them, at 51–64%. The small kernels did not: SwiGLU, RMSNorm and the bias ran one block per row (64 blocks for 80 SMs, each walking its row one load at a time), and a separate pass converted SwiGLU's output to BF16. They now stride over all rows, RMSNorm keeps its row in registers, and SwiGLU writes the BF16 copy itself: 9.25 → 8.82 ms of kernels per step.
+The timeline of the real engine (Nsight Systems) showed the rest: the GPU idle a median 0.48 ms before each step (launch_lanes).
+Launching the step's recorded graph took the CPU ~340 µs (about 1 µs per kernel), and the GPU started only once it returned; Windows' WDDM driver also batches submissions until forced. The step is now recorded as seven graphs of four layers, each followed by a stream query that hands it to the GPU: the GPU starts after the first piece, and the median gap is 186 µs. And because the batch shrinks one reply at a time, a new graph was recorded 51 times during the run (188 ms, GPU idle); graphs for every batch size are now recorded at startup, as vLLM does.
+Old and new builds alternated three times on the same workload (averages), on a busy desktop: the results table above, from a quiet one, is higher again. Only same-session comparisons are meaningful.
+Caveats
+On Windows the desktop's own rendering shares the GPU: a video playing in a browser moved every engine's results by up to 30%. These are from a quiet desktop.
+vLLM ran under WSL2, a thin virtualization layer over the same GPU; native Linux might be a few percent faster.
+llama.cpp's numbers include Ollama's server; llama.cpp's own llama-server or llama-bench may batch differently.
+This is one workload: medium prompts, greedy, unique prefixes. With shared prefixes (the market's real case) Murmur and vLLM both reuse cached prompts; this comparison turns that off on purpose.
+The two FP8s scale differently (vLLM's online FP8 uses per-tensor scales, Murmur's a scale per row), so their quality differs a little; Murmur's is measured in quantization.md.

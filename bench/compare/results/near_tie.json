@@ -1,0 +1,6 @@
+{
+ "request": 5,
+ "text_before": "Priya had always been fascinated by the idea of",
+ "reference": "Hugging Face Transformers, FP32, CPU",
+ "top": [{"token": " memory", "logit": 19.6442, "p": 0.0866}, {"token": " augment", "logit": 19.6375, "p": 0.0860}, {"token": " implants", "logit": 19.0306, "p": 0.0469}, {"token": " having", "logit": 18.9097, "p": 0.0415}]
+}

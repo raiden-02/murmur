@@ -1,0 +1,1917 @@
+{
+ "draft_weights": "int4",
+ "plain_step_ms": 3.582861267605634,
+ "plain_tokens_per_second": 270.559416520417,
+ "runs": [
+  {
+   "check_ms_per_step": 4.1331775784753395,
+   "draft_ms_per_step": 1.9698479820627801,
+   "draft_tokens": 1,
+   "first_reply": [
+    [
+     "Tonight",
+     false
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " they",
+     false
+    ],
+    [
+     "'re",
+     true
+    ],
+    [
+     " serving",
+     false
+    ],
+    [
+     " up",
+     false
+    ],
+    [
+     " some",
+     true
+    ],
+    [
+     " of",
+     false
+    ],
+    [
+     " the",
+     true
+    ],
+    [
+     " best",
+     false
+    ],
+    [
+     " black",
+     false
+    ],
+    [
+     "-g",
+     true
+    ],
+    [
+     "ar",
+     false
+    ],
+    [
+     "lic",
+     true
+    ],
+    [
+     " ram",
+     false
+    ],
+    [
+     "en",
+     true
+    ],
+    [
+     " you",
+     false
+    ],
+    [
+     "'ll",
+     false
+    ],
+    [
+     " ever",
+     true
+    ],
+    [
+     " taste",
+     false
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " The",
+     false
+    ],
+    [
+     " broth",
+     false
+    ],
+    [
+     " is",
+     true
+    ],
+    [
+     " thick",
+     false
+    ],
+    [
+     " and",
+     true
+    ],
+    [
+     " rich",
+     false
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " noodles",
+     false
+    ],
+    [
+     " chew",
+     false
+    ],
+    [
+     "y",
+     true
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " and",
+     true
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " garlic",
+     false
+    ],
+    [
+     " adds",
+     true
+    ],
+    [
+     " a",
+     false
+    ],
+    [
+     " kick",
+     false
+    ],
+    [
+     " that",
+     true
+    ],
+    [
+     "'s",
+     false
+    ],
+    [
+     " hard",
+     true
+    ],
+    [
+     " to",
+     false
+    ],
+    [
+     " resist",
+     true
+    ],
+    [
+     ".",
+     false
+    ],
+    [
+     " Plus",
+     false
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " they",
+     false
+    ],
+    [
+     "'ve",
+     false
+    ],
+    [
+     " got",
+     true
+    ],
+    [
+     " a",
+     false
+    ],
+    [
+     " special",
+     true
+    ],
+    [
+     " deal",
+     false
+    ],
+    [
+     " on",
+     false
+    ],
+    [
+     " it",
+     false
+    ],
+    [
+     " -",
+     false
+    ],
+    [
+     " a",
+     false
+    ],
+    [
+     " whole",
+     false
+    ],
+    [
+     " pot",
+     false
+    ],
+    [
+     " for",
+     false
+    ],
+    [
+     " just",
+     true
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " price",
+     true
+    ],
+    [
+     " of",
+     false
+    ],
+    [
+     " two",
+     false
+    ],
+    [
+     " bowls",
+     false
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " It",
+     false
+    ],
+    [
+     "'s",
+     true
+    ],
+    [
+     " like",
+     false
+    ],
+    [
+     " getting",
+     false
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " free",
+     false
+    ],
+    [
+     " meal",
+     true
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " Mei",
+     false
+    ],
+    [
+     ".",
+     true
+    ]
+   ],
+   "identical": 6,
+   "kept_percent": 48.4304932735426,
+   "tokens_per_second": 238.19962766420701
+  },
+  {
+   "check_ms_per_step": 4.1830529100529175,
+   "draft_ms_per_step": 3.292111640211639,
+   "draft_tokens": 2,
+   "first_reply": [
+    [
+     "Tonight",
+     false
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " they",
+     false
+    ],
+    [
+     "'re",
+     true
+    ],
+    [
+     " serving",
+     false
+    ],
+    [
+     " up",
+     false
+    ],
+    [
+     " some",
+     true
+    ],
+    [
+     " of",
+     true
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " best",
+     false
+    ],
+    [
+     " black",
+     false
+    ],
+    [
+     "-g",
+     true
+    ],
+    [
+     "ar",
+     true
+    ],
+    [
+     "lic",
+     false
+    ],
+    [
+     " ram",
+     true
+    ],
+    [
+     "en",
+     true
+    ],
+    [
+     " you",
+     false
+    ],
+    [
+     "'ll",
+     false
+    ],
+    [
+     " ever",
+     true
+    ],
+    [
+     " taste",
+     true
+    ],
+    [
+     ".",
+     false
+    ],
+    [
+     " The",
+     false
+    ],
+    [
+     " broth",
+     false
+    ],
+    [
+     " is",
+     true
+    ],
+    [
+     " thick",
+     false
+    ],
+    [
+     " and",
+     true
+    ],
+    [
+     " rich",
+     true
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " noodles",
+     false
+    ],
+    [
+     " chew",
+     false
+    ],
+    [
+     "y",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " and",
+     false
+    ],
+    [
+     " the",
+     true
+    ],
+    [
+     " garlic",
+     false
+    ],
+    [
+     " adds",
+     true
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " kick",
+     false
+    ],
+    [
+     " that",
+     true
+    ],
+    [
+     "'s",
+     true
+    ],
+    [
+     " hard",
+     false
+    ],
+    [
+     " to",
+     true
+    ],
+    [
+     " resist",
+     true
+    ],
+    [
+     ".",
+     false
+    ],
+    [
+     " Plus",
+     false
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " they",
+     false
+    ],
+    [
+     "'ve",
+     false
+    ],
+    [
+     " got",
+     true
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " special",
+     false
+    ],
+    [
+     " deal",
+     false
+    ],
+    [
+     " on",
+     false
+    ],
+    [
+     " it",
+     false
+    ],
+    [
+     " -",
+     false
+    ],
+    [
+     " a",
+     false
+    ],
+    [
+     " whole",
+     false
+    ],
+    [
+     " pot",
+     false
+    ],
+    [
+     " for",
+     false
+    ],
+    [
+     " just",
+     true
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " price",
+     true
+    ],
+    [
+     " of",
+     true
+    ],
+    [
+     " two",
+     false
+    ],
+    [
+     " bowls",
+     false
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " It",
+     true
+    ],
+    [
+     "'s",
+     false
+    ],
+    [
+     " like",
+     false
+    ],
+    [
+     " getting",
+     false
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " free",
+     true
+    ],
+    [
+     " meal",
+     false
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " Mei",
+     false
+    ],
+    [
+     ".",
+     true
+    ]
+   ],
+   "identical": 6,
+   "kept_percent": 39.784946236559136,
+   "tokens_per_second": 229.39875518199244
+  },
+  {
+   "check_ms_per_step": 4.414572067039104,
+   "draft_ms_per_step": 4.650194413407822,
+   "draft_tokens": 3,
+   "first_reply": [
+    [
+     "Tonight",
+     false
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " they",
+     false
+    ],
+    [
+     "'re",
+     true
+    ],
+    [
+     " serving",
+     false
+    ],
+    [
+     " up",
+     false
+    ],
+    [
+     " some",
+     true
+    ],
+    [
+     " of",
+     true
+    ],
+    [
+     " the",
+     true
+    ],
+    [
+     " best",
+     false
+    ],
+    [
+     " black",
+     false
+    ],
+    [
+     "-g",
+     true
+    ],
+    [
+     "ar",
+     true
+    ],
+    [
+     "lic",
+     true
+    ],
+    [
+     " ram",
+     false
+    ],
+    [
+     "en",
+     true
+    ],
+    [
+     " you",
+     false
+    ],
+    [
+     "'ll",
+     false
+    ],
+    [
+     " ever",
+     true
+    ],
+    [
+     " taste",
+     true
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " The",
+     false
+    ],
+    [
+     " broth",
+     false
+    ],
+    [
+     " is",
+     true
+    ],
+    [
+     " thick",
+     false
+    ],
+    [
+     " and",
+     true
+    ],
+    [
+     " rich",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " noodles",
+     false
+    ],
+    [
+     " chew",
+     false
+    ],
+    [
+     "y",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " and",
+     true
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " garlic",
+     false
+    ],
+    [
+     " adds",
+     true
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " kick",
+     false
+    ],
+    [
+     " that",
+     true
+    ],
+    [
+     "'s",
+     true
+    ],
+    [
+     " hard",
+     true
+    ],
+    [
+     " to",
+     false
+    ],
+    [
+     " resist",
+     true
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " Plus",
+     false
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " they",
+     false
+    ],
+    [
+     "'ve",
+     false
+    ],
+    [
+     " got",
+     true
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " special",
+     true
+    ],
+    [
+     " deal",
+     false
+    ],
+    [
+     " on",
+     false
+    ],
+    [
+     " it",
+     false
+    ],
+    [
+     " -",
+     false
+    ],
+    [
+     " a",
+     false
+    ],
+    [
+     " whole",
+     false
+    ],
+    [
+     " pot",
+     false
+    ],
+    [
+     " for",
+     false
+    ],
+    [
+     " just",
+     true
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " price",
+     true
+    ],
+    [
+     " of",
+     true
+    ],
+    [
+     " two",
+     false
+    ],
+    [
+     " bowls",
+     false
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " It",
+     true
+    ],
+    [
+     "'s",
+     true
+    ],
+    [
+     " like",
+     false
+    ],
+    [
+     " getting",
+     false
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " free",
+     true
+    ],
+    [
+     " meal",
+     true
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " Mei",
+     false
+    ],
+    [
+     ".",
+     true
+    ]
+   ],
+   "identical": 6,
+   "kept_percent": 30.6640625,
+   "tokens_per_second": 199.73167298058013
+  },
+  {
+   "check_ms_per_step": 4.469024418604648,
+   "draft_ms_per_step": 5.883466860465114,
+   "draft_tokens": 4,
+   "first_reply": [
+    [
+     "Tonight",
+     false
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " they",
+     false
+    ],
+    [
+     "'re",
+     true
+    ],
+    [
+     " serving",
+     false
+    ],
+    [
+     " up",
+     false
+    ],
+    [
+     " some",
+     true
+    ],
+    [
+     " of",
+     true
+    ],
+    [
+     " the",
+     true
+    ],
+    [
+     " best",
+     false
+    ],
+    [
+     " black",
+     false
+    ],
+    [
+     "-g",
+     true
+    ],
+    [
+     "ar",
+     true
+    ],
+    [
+     "lic",
+     true
+    ],
+    [
+     " ram",
+     true
+    ],
+    [
+     "en",
+     false
+    ],
+    [
+     " you",
+     false
+    ],
+    [
+     "'ll",
+     false
+    ],
+    [
+     " ever",
+     true
+    ],
+    [
+     " taste",
+     true
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " The",
+     false
+    ],
+    [
+     " broth",
+     false
+    ],
+    [
+     " is",
+     true
+    ],
+    [
+     " thick",
+     false
+    ],
+    [
+     " and",
+     true
+    ],
+    [
+     " rich",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " noodles",
+     false
+    ],
+    [
+     " chew",
+     false
+    ],
+    [
+     "y",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " and",
+     true
+    ],
+    [
+     " the",
+     true
+    ],
+    [
+     " garlic",
+     false
+    ],
+    [
+     " adds",
+     true
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " kick",
+     false
+    ],
+    [
+     " that",
+     true
+    ],
+    [
+     "'s",
+     true
+    ],
+    [
+     " hard",
+     true
+    ],
+    [
+     " to",
+     true
+    ],
+    [
+     " resist",
+     false
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " Plus",
+     false
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " they",
+     false
+    ],
+    [
+     "'ve",
+     false
+    ],
+    [
+     " got",
+     true
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " special",
+     true
+    ],
+    [
+     " deal",
+     false
+    ],
+    [
+     " on",
+     false
+    ],
+    [
+     " it",
+     false
+    ],
+    [
+     " -",
+     false
+    ],
+    [
+     " a",
+     false
+    ],
+    [
+     " whole",
+     false
+    ],
+    [
+     " pot",
+     false
+    ],
+    [
+     " for",
+     false
+    ],
+    [
+     " just",
+     true
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " price",
+     true
+    ],
+    [
+     " of",
+     true
+    ],
+    [
+     " two",
+     false
+    ],
+    [
+     " bowls",
+     false
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " It",
+     true
+    ],
+    [
+     "'s",
+     true
+    ],
+    [
+     " like",
+     false
+    ],
+    [
+     " getting",
+     false
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " free",
+     true
+    ],
+    [
+     " meal",
+     true
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " Mei",
+     false
+    ],
+    [
+     ".",
+     true
+    ]
+   ],
+   "identical": 6,
+   "kept_percent": 25.90266875981162,
+   "tokens_per_second": 181.95644804182453
+  },
+  {
+   "check_ms_per_step": 4.404760355029592,
+   "draft_ms_per_step": 7.761123668639053,
+   "draft_tokens": 6,
+   "first_reply": [
+    [
+     "Tonight",
+     false
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " they",
+     false
+    ],
+    [
+     "'re",
+     true
+    ],
+    [
+     " serving",
+     false
+    ],
+    [
+     " up",
+     false
+    ],
+    [
+     " some",
+     true
+    ],
+    [
+     " of",
+     true
+    ],
+    [
+     " the",
+     true
+    ],
+    [
+     " best",
+     false
+    ],
+    [
+     " black",
+     false
+    ],
+    [
+     "-g",
+     true
+    ],
+    [
+     "ar",
+     true
+    ],
+    [
+     "lic",
+     true
+    ],
+    [
+     " ram",
+     true
+    ],
+    [
+     "en",
+     true
+    ],
+    [
+     " you",
+     false
+    ],
+    [
+     "'ll",
+     false
+    ],
+    [
+     " ever",
+     true
+    ],
+    [
+     " taste",
+     true
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " The",
+     false
+    ],
+    [
+     " broth",
+     false
+    ],
+    [
+     " is",
+     true
+    ],
+    [
+     " thick",
+     false
+    ],
+    [
+     " and",
+     true
+    ],
+    [
+     " rich",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " noodles",
+     false
+    ],
+    [
+     " chew",
+     false
+    ],
+    [
+     "y",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " and",
+     true
+    ],
+    [
+     " the",
+     true
+    ],
+    [
+     " garlic",
+     false
+    ],
+    [
+     " adds",
+     true
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " kick",
+     false
+    ],
+    [
+     " that",
+     true
+    ],
+    [
+     "'s",
+     true
+    ],
+    [
+     " hard",
+     true
+    ],
+    [
+     " to",
+     true
+    ],
+    [
+     " resist",
+     true
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " Plus",
+     false
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " they",
+     false
+    ],
+    [
+     "'ve",
+     false
+    ],
+    [
+     " got",
+     true
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " special",
+     true
+    ],
+    [
+     " deal",
+     false
+    ],
+    [
+     " on",
+     false
+    ],
+    [
+     " it",
+     false
+    ],
+    [
+     " -",
+     false
+    ],
+    [
+     " a",
+     false
+    ],
+    [
+     " whole",
+     false
+    ],
+    [
+     " pot",
+     false
+    ],
+    [
+     " for",
+     false
+    ],
+    [
+     " just",
+     true
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " price",
+     true
+    ],
+    [
+     " of",
+     true
+    ],
+    [
+     " two",
+     false
+    ],
+    [
+     " bowls",
+     false
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " It",
+     true
+    ],
+    [
+     "'s",
+     true
+    ],
+    [
+     " like",
+     false
+    ],
+    [
+     " getting",
+     false
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " free",
+     true
+    ],
+    [
+     " meal",
+     true
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " Mei",
+     false
+    ],
+    [
+     ".",
+     true
+    ]
+   ],
+   "identical": 6,
+   "kept_percent": 19.221967963386728,
+   "tokens_per_second": 157.31379613970628
+  },
+  {
+   "check_ms_per_step": 4.30004285714286,
+   "draft_ms_per_step": 8.978083333333332,
+   "draft_tokens": 8,
+   "first_reply": [
+    [
+     "Tonight",
+     false
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " they",
+     false
+    ],
+    [
+     "'re",
+     true
+    ],
+    [
+     " serving",
+     false
+    ],
+    [
+     " up",
+     false
+    ],
+    [
+     " some",
+     true
+    ],
+    [
+     " of",
+     true
+    ],
+    [
+     " the",
+     true
+    ],
+    [
+     " best",
+     false
+    ],
+    [
+     " black",
+     false
+    ],
+    [
+     "-g",
+     true
+    ],
+    [
+     "ar",
+     true
+    ],
+    [
+     "lic",
+     true
+    ],
+    [
+     " ram",
+     true
+    ],
+    [
+     "en",
+     true
+    ],
+    [
+     " you",
+     false
+    ],
+    [
+     "'ll",
+     false
+    ],
+    [
+     " ever",
+     true
+    ],
+    [
+     " taste",
+     true
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " The",
+     false
+    ],
+    [
+     " broth",
+     false
+    ],
+    [
+     " is",
+     true
+    ],
+    [
+     " thick",
+     false
+    ],
+    [
+     " and",
+     true
+    ],
+    [
+     " rich",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " noodles",
+     false
+    ],
+    [
+     " chew",
+     false
+    ],
+    [
+     "y",
+     true
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " and",
+     true
+    ],
+    [
+     " the",
+     true
+    ],
+    [
+     " garlic",
+     false
+    ],
+    [
+     " adds",
+     true
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " kick",
+     false
+    ],
+    [
+     " that",
+     true
+    ],
+    [
+     "'s",
+     true
+    ],
+    [
+     " hard",
+     true
+    ],
+    [
+     " to",
+     true
+    ],
+    [
+     " resist",
+     true
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " Plus",
+     false
+    ],
+    [
+     ",",
+     true
+    ],
+    [
+     " they",
+     false
+    ],
+    [
+     "'ve",
+     false
+    ],
+    [
+     " got",
+     true
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " special",
+     true
+    ],
+    [
+     " deal",
+     false
+    ],
+    [
+     " on",
+     false
+    ],
+    [
+     " it",
+     false
+    ],
+    [
+     " -",
+     false
+    ],
+    [
+     " a",
+     false
+    ],
+    [
+     " whole",
+     false
+    ],
+    [
+     " pot",
+     false
+    ],
+    [
+     " for",
+     false
+    ],
+    [
+     " just",
+     true
+    ],
+    [
+     " the",
+     false
+    ],
+    [
+     " price",
+     true
+    ],
+    [
+     " of",
+     true
+    ],
+    [
+     " two",
+     false
+    ],
+    [
+     " bowls",
+     false
+    ],
+    [
+     ".",
+     true
+    ],
+    [
+     " It",
+     true
+    ],
+    [
+     "'s",
+     true
+    ],
+    [
+     " like",
+     false
+    ],
+    [
+     " getting",
+     false
+    ],
+    [
+     " a",
+     true
+    ],
+    [
+     " free",
+     true
+    ],
+    [
+     " meal",
+     true
+    ],
+    [
+     ",",
+     false
+    ],
+    [
+     " Mei",
+     false
+    ],
+    [
+     ".",
+     true
+    ]
+   ],
+   "identical": 6,
+   "kept_percent": 15.648148148148149,
+   "tokens_per_second": 145.05844359361623
+  }
+ ],
+ "sampled": false,
+ "weights": "fp8"
+}
